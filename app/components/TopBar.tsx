@@ -36,31 +36,38 @@ export default function TopBar(): React.JSX.Element {
                 </a>
             </div>
             <div className="flex items-center gap-3 px-4 p-12 mr-4">
-                <Image
-                    src="https://cdn.simpleicons.org/facebook/ffffff"
-                    alt="Facebook"
-                    width={14}
-                    height={14}
-                />
-                <Image
-                    src="https://cdn.simpleicons.org/instagram/ffffff"
-                    alt="Instagram"
-                    width={14}
-                    height={14}
-                />
-
-                <Image
-                    src="https://cdn.simpleicons.org/youtube/ffffff"
-                    alt="Youtube"
-                    width={14}
-                    height={14}
-                />
-                <Image
-                    src="https://cdn.simpleicons.org/tiktok/ffffff"
-                    alt="Tiktok"
-                    width={14}
-                    height={14}
-                />
+                <a href="https://facebook.com/brightpathnepal" target="_blank" rel="noopener noreferrer">
+                    <Image
+                        src="https://cdn.simpleicons.org/facebook/ffffff"
+                        alt="Facebook"
+                        width={14}
+                        height={14}
+                    />
+                </a>
+                <a href="https://instagram.com/brightpathnepal" target="_blank" rel="noopener noreferrer">
+                    <Image
+                        src="https://cdn.simpleicons.org/instagram/ffffff"
+                        alt="Instagram"
+                        width={14}
+                        height={14}
+                    />
+                </a>
+                <a target="_blank" rel="noopener noreferrer">
+                    <Image
+                        src="https://cdn.simpleicons.org/youtube/ffffff"
+                        alt="Youtube"
+                        width={14}
+                        height={14}
+                    />
+                </a>
+                <a href="https://tiktok.com/@brightpathnepal" target="_blank" rel="noopener noreferrer">
+                    <Image
+                        src="https://cdn.simpleicons.org/tiktok/ffffff"
+                        alt="Tiktok"
+                        width={14}
+                        height={14}
+                    />
+                </a>
             </div>
         </div>
     );
