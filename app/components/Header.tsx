@@ -169,7 +169,7 @@ export default function Header(): React.JSX.Element {
           </div>
 
           <button
-            onClick={() => setMobileOpen((prev) => !prev)}
+            onClick={() => setMobileOpen((prev) => !prev) }
             aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={mobileOpen}
             aria-controls="mobile-nav"
