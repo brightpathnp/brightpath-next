@@ -31,9 +31,11 @@ export default function ServiceDetailClient({ service }: ServiceDetailClientProp
   return (
     <div className="page-transition min-h-screen bg-slate-50 font-sans pb-24">
       {/* Header Banner */}
-      <section className="bg-brand-dark py-10 md:py-16 relative overflow-hidden">
+      <section className="bg-brand-dark py-10 md:py-16 relative overflow-hidden"
+       style={{ background: '#263c96'}}
+      >
         <div className="absolute inset-0 z-0">
-          <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-brand-blue rounded-full blur-[120px] opacity-20" />
+          <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-white rounded-full blur-[120px] opacity-20" />
           <div className="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-brand-purple rounded-full blur-[100px] opacity-10" />
         </div>
         <div className="max-w-7xl mx-auto px-4 relative z-10">
@@ -89,7 +91,7 @@ export default function ServiceDetailClient({ service }: ServiceDetailClientProp
                 <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tight">
                   How we work.
                 </h2>
-                <div className="w-20 h-2 bg-brand-blue rounded-full" />
+                <div className="w-20 h-2 bg-white rounded-full" />
                 <p className="text-slate-600 text-xl leading-relaxed font-medium">
                   {service.methodology}
                 </p>
@@ -99,7 +101,7 @@ export default function ServiceDetailClient({ service }: ServiceDetailClientProp
                 <div className="space-y-8">
                   {service.detailedProcess.map((step, i) => (
                     <div key={i} className="flex gap-8 group">
-                      <div className="w-14 h-14 rounded-3xl bg-white border border-slate-100 shadow-sm flex items-center justify-center text-brand-blue font-black text-xl shrink-0 group-hover:bg-brand-blue group-hover:text-white transition-all">
+                      <div className="w-14 h-14 rounded-3xl bg-white border border-slate-100 shadow-sm flex items-center justify-center text-[#3B82F6] font-black text-xl shrink-0 group-hover:bg-[#3B82F6] group-hover:text-white transition-all">
                         {i + 1}
                       </div>
                       <div>
@@ -130,7 +132,9 @@ export default function ServiceDetailClient({ service }: ServiceDetailClientProp
                 </div>
               )}
 
-              <div className="bg-brand-blue p-10 rounded-[3rem] text-white shadow-xl relative overflow-hidden">
+              <div 
+               style={{ background: 'linear-gradient(to right, #214aaf, #3B82F6)' }}
+              className="bg-white p-10 rounded-[3rem] text-white shadow-xl relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
                 <h3 className="text-2xl font-black mb-4 relative z-10">Ready to Start?</h3>
                 <p className="text-blue-100 text-sm font-medium mb-8 relative z-10">
@@ -138,7 +142,8 @@ export default function ServiceDetailClient({ service }: ServiceDetailClientProp
                 </p>
                 <button
                   onClick={() => setModalOpen(true)}
-                  className="w-full py-4 bg-white text-brand-blue font-black text-[11px] rounded-2xl uppercase tracking-widest shadow-xl hover:scale-105 active:scale-95 transition-all relative z-10"
+                  className="w-full py-4 bg-white font-black text-[11px] rounded-2xl uppercase tracking-widest shadow-xl hover:scale-105 active:scale-95 transition-all relative z-10"
+                  style={{color: '#3b8df6'}}
                 >
                   Book Session Now
                 </button>
@@ -171,7 +176,7 @@ export default function ServiceDetailClient({ service }: ServiceDetailClientProp
                       height={128}
                       className="w-32 h-32 rounded-[2rem] object-cover border-4 border-white shadow-lg mx-auto"
                     />
-                    <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-brand-blue text-white rounded-xl flex items-center justify-center border-2 border-white shadow-lg">
+                    <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-white text-white rounded-xl flex items-center justify-center border-2 border-white shadow-lg">
                       <Star className="w-5 h-5 fill-white" aria-hidden="true" />
                     </div>
                   </div>

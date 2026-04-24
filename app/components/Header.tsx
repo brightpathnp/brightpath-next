@@ -108,7 +108,7 @@ export default function Header(): React.JSX.Element {
                       aria-expanded={openDropdown === item.label}
                       aria-haspopup="true"
                       className={`flex items-center gap-1 px-3 py-2 rounded-md transition-colors ${
-                        isActive(item.href) ? 'text-blue-500' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'
+                        isActive(item.href) ? 'text-blue-500' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50 hover:cursor-pointer'
                       }`}
                       style={{ fontSize: '12px', fontWeight: 900 }}
                     >
@@ -130,7 +130,7 @@ export default function Header(): React.JSX.Element {
                             className={`block px-4 py-2 transition-colors ${
                               pathname === child.href
                                 ? 'text-blue-500 bg-blue-50'
-                                : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                                : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50 hover:cursor-pointer'
                             }`}
                             style={{ fontSize: '12px', fontWeight: 900 }}
                           >
@@ -173,7 +173,7 @@ export default function Header(): React.JSX.Element {
             aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={mobileOpen}
             aria-controls="mobile-nav"
-            className="lg:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors"
+            className="lg:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 hover:cursor-pointer transition-colors"
           >
             {mobileOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
@@ -196,7 +196,7 @@ export default function Header(): React.JSX.Element {
                     className={`w-full flex items-center justify-between px-3 py-3 rounded-lg transition-colors ${
                       isActive(item.href)
                         ? 'text-blue-500 bg-blue-50'
-                        : 'text-gray-700 hover:bg-gray-50'
+                        : 'text-gray-700 hover:bg-gray-50 hover:cursor-pointer'
                     }`}
                   >
                     {item.label}
