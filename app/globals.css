@@ -12,6 +12,7 @@
   --font-mono: var(--font-geist-mono);
   --color-brand-blue: #3B82F6;
   --color-brand-purple: #7C3AED;
+  --color-brand-dark: #263C96;
 }
 
 @media (prefers-color-scheme: dark) {

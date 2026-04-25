@@ -32,7 +32,6 @@ export default function ServiceDetailClient({ service }: ServiceDetailClientProp
     <div className="page-transition min-h-screen bg-slate-50 font-sans pb-24">
       {/* Header Banner */}
       <section className="bg-brand-dark py-10 md:py-16 relative overflow-hidden"
-       style={{ background: '#263c96'}}
       >
         <div className="absolute inset-0 z-0">
           <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-white rounded-full blur-[120px] opacity-20" />
