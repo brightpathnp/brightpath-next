@@ -19,9 +19,9 @@ export default function ServicesPage(): React.JSX.Element {
 
   return (
     <div className="page-transition min-h-screen">
-      {/* Hero Banner */}
-      <section className="py-16 md:py-20 relative overflow-hidden" 
-      style={{ background: 'linear-gradient(to right, #214aaf, #3B82F6)' }}
+      <section
+        className="py-16 md:py-20 relative overflow-hidden"
+        style={{ background: 'linear-gradient(to right, #214aaf, #3B82F6)' }}
       >
         <div className="max-w-7xl mx-auto px-4 text-center relative z-10">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-white text-[9px] font-black uppercase tracking-[0.2em] mb-6">
@@ -37,7 +37,6 @@ export default function ServicesPage(): React.JSX.Element {
         </div>
       </section>
 
-      {/* Services Grid */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -47,9 +46,9 @@ export default function ServicesPage(): React.JSX.Element {
                 <Link
                   key={service.id}
                   href={`/services/${service.id}`}
-                  className="group bg-slate-50 rounded-[2.5rem] p-10 border border-slate-100 hover:border-brand-blue hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-500 flex flex-col"
+                  className="group bg-slate-50 rounded-[2.5rem] p-10 border border-slate-100 shadow-sm hover:border-brand-blue hover:shadow-2xl hover:shadow-blue-900/10 hover:-translate-y-2 transition-all duration-500 flex flex-col relative overflow-hidden"
                 >
-                  <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-brand-blue mb-8 group-hover:bg-white group-hover:text-brand-blue transition-all shadow-sm border border-slate-100 shrink-0">
+                  <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-brand-blue mb-8 group-hover:bg-white group-hover:text-brand-blue group-hover:scale-110 transition-all duration-300 shadow-sm border border-slate-100 group-hover:border-brand-blue/30 group-hover:shadow-md shrink-0">
                     <Icon className="w-8 h-8" aria-hidden="true" />
                   </div>
                   <h2 className="text-2xl font-black text-slate-900 mb-4 tracking-tight group-hover:text-brand-blue transition-colors">
@@ -78,7 +77,6 @@ export default function ServicesPage(): React.JSX.Element {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="bg-[#0f172a] rounded-[4rem] p-16 md:p-24 text-center shadow-2xl relative overflow-hidden">

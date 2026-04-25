@@ -85,11 +85,11 @@ export default function Header(): React.JSX.Element {
   }
 
   return (
-<header
-  className={`fixed top-0 sm:top-8 inset-x-0 z-40 bg-white transition-all duration-300 ${
-    scrolled ? 'shadow-sm border-b border-gray-100' : ''
-  }`}
->
+    <header
+      className={`fixed top-0 sm:top-8 inset-x-0 z-40 bg-white transition-all duration-300 ${
+        scrolled ? 'shadow-sm border-b border-gray-100' : ''
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="shrink-0">
@@ -107,10 +107,9 @@ export default function Header(): React.JSX.Element {
                       onClick={() => toggleDropdown(item.label)}
                       aria-expanded={openDropdown === item.label}
                       aria-haspopup="true"
-                      className={`flex items-center gap-1 px-3 py-2 rounded-md transition-colors ${
-                        isActive(item.href) ? 'text-blue-500' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50 hover:cursor-pointer'
+                      className={`flex items-center gap-1 px-3 py-2 rounded-md text-xs font-black cursor-pointer transition-colors ${
+                        isActive(item.href) ? 'text-blue-500' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'
                       }`}
-                      style={{ fontSize: '12px', fontWeight: 900 }}
                     >
                       {item.label}
                       <ChevronDown
@@ -127,12 +126,11 @@ export default function Header(): React.JSX.Element {
                           <Link
                             key={child.href}
                             href={child.href}
-                            className={`block px-4 py-2 transition-colors ${
+                            className={`block px-4 py-2 text-xs font-black transition-colors ${
                               pathname === child.href
                                 ? 'text-blue-500 bg-blue-50'
-                                : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50 hover:cursor-pointer'
+                                : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                             }`}
-                            style={{ fontSize: '12px', fontWeight: 900 }}
                           >
                             {child.label}
                           </Link>
@@ -144,12 +142,11 @@ export default function Header(): React.JSX.Element {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`px-3 py-2 rounded-md transition-colors ${
+                    className={`px-3 py-2 rounded-md text-xs font-black transition-colors ${
                       isActive(item.href)
                         ? 'text-blue-500'
                         : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'
                     }`}
-                    style={{ fontSize: '12px', fontWeight: 900 }}
                   >
                     {item.label}
                   </Link>
@@ -161,19 +158,18 @@ export default function Header(): React.JSX.Element {
           <div className="hidden lg:flex items-center">
             <Link
               href="/contact"
-              className="text-white px-4 py-2 rounded-lg transition-colors hover:opacity-90"
-              style={{ backgroundColor: '#3B82F6', fontSize: '12px', fontWeight: 900 }}
+              className="bg-brand-blue text-white text-xs font-black px-4 py-2 rounded-lg transition-colors hover:opacity-90"
             >
               Free Consultation
             </Link>
           </div>
 
           <button
-            onClick={() => setMobileOpen((prev) => !prev) }
+            onClick={() => setMobileOpen((prev) => !prev)}
             aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={mobileOpen}
             aria-controls="mobile-nav"
-            className="lg:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 hover:cursor-pointer transition-colors"
+            className="lg:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 cursor-pointer transition-colors"
           >
             {mobileOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
@@ -182,9 +178,8 @@ export default function Header(): React.JSX.Element {
 
       {mobileOpen && (
         <div
-  id="mobile-nav"
-  className="lg:hidden fixed inset-0 top-16 bg-white 
-  z-30 overflow-y-auto"
+          id="mobile-nav"
+          className="lg:hidden fixed inset-0 top-16 bg-white z-30 overflow-y-auto"
         >
           <nav className="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
             {navItems.map((item) =>
@@ -193,10 +188,10 @@ export default function Header(): React.JSX.Element {
                   <button
                     onClick={() => toggleDropdown(item.label)}
                     aria-expanded={openDropdown === item.label}
-                    className={`w-full flex items-center justify-between px-3 py-3 rounded-lg transition-colors ${
+                    className={`w-full flex items-center justify-between px-3 py-3 rounded-lg cursor-pointer transition-colors ${
                       isActive(item.href)
                         ? 'text-blue-500 bg-blue-50'
-                        : 'text-gray-700 hover:bg-gray-50 hover:cursor-pointer'
+                        : 'text-gray-700 hover:bg-gray-50'
                     }`}
                   >
                     {item.label}
@@ -213,12 +208,11 @@ export default function Header(): React.JSX.Element {
                         <Link
                           key={child.href}
                           href={child.href}
-                          className={`block px-3 py-2.5 rounded-lg transition-colors ${
+                          className={`block px-3 py-2.5 rounded-lg text-xs font-black transition-colors ${
                             pathname === child.href
                               ? 'text-blue-500 bg-blue-50'
                               : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                           }`}
-                          style={{ fontSize: '12px', fontWeight: 900 }}
                         >
                           {child.label}
                         </Link>
@@ -230,12 +224,11 @@ export default function Header(): React.JSX.Element {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`block px-3 py-3 rounded-lg transition-colors ${
+                  className={`block px-3 py-3 rounded-lg text-xs font-black transition-colors ${
                     isActive(item.href)
                       ? 'text-blue-500 bg-blue-50'
                       : 'text-gray-700 hover:bg-gray-50'
                   }`}
-                  style={{ fontSize: '12px', fontWeight: 900 }}
                 >
                   {item.label}
                 </Link>
@@ -245,8 +238,7 @@ export default function Header(): React.JSX.Element {
             <div className="mt-4 pt-4 border-t border-gray-100">
               <Link
                 href="/contact"
-                className="block w-full text-center text-white px-4 py-3 rounded-lg transition-colors hover:opacity-90"
-                style={{ backgroundColor: '#3B82F6', fontSize: '12px', fontWeight: 900 }}
+                className="block w-full text-center bg-brand-blue text-white text-xs font-black px-4 py-3 rounded-lg transition-colors hover:opacity-90"
               >
                 Free Consultation
               </Link>

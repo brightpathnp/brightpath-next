@@ -13,7 +13,7 @@ function getIcon(iconName: string): React.ElementType {
 
 export default function Services() {
   return (
-    <section id="services" className="py-24 bg-white font-sans">
+    <section id="services" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
           <div className="max-w-2xl">
