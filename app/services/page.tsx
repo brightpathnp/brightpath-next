@@ -45,7 +45,7 @@ export default function ServicesPage(): React.JSX.Element {
               return (
                 <Link
                   key={service.id}
-                  href={`/services/${service.id}`}
+                  href={`/services/${service.slug}`}
                   className="group bg-slate-50 rounded-[2.5rem] p-10 border border-slate-100 shadow-sm hover:border-brand-blue hover:shadow-2xl hover:shadow-blue-900/10 hover:-translate-y-2 transition-all duration-500 flex flex-col relative overflow-hidden"
                 >
                   <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-brand-blue mb-8 group-hover:bg-white group-hover:text-brand-blue group-hover:scale-110 transition-all duration-300 shadow-sm border border-slate-100 group-hover:border-brand-blue/30 group-hover:shadow-md shrink-0">

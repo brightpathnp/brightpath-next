@@ -38,7 +38,7 @@ export default function Services() {
             return (
               <Link
                 key={service.id}
-                href={`/services/${service.id}`}
+                href={`/services/${service.slug}`}
                 className="group p-10 rounded-[2rem] bg-slate-50 border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2 transition-all duration-500 relative overflow-hidden"
               >
                 <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center mb-8 text-brand-blue shadow-sm border border-slate-100 group-hover:scale-110 group-hover:border-brand-blue/30 group-hover:shadow-md transition-all duration-300">

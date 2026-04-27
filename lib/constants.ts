@@ -13,6 +13,7 @@ export const SERVICES: Service[] = [
   {
     id: '1',
     title: 'Education Counseling',
+     slug: 'education-counseling',
     icon: 'globe',
     description: 'Expert guidance on choosing the right university and course tailored to your career goals in Japan, Korea, Australia, and more.',
     fullDescription: 'Choosing the right career path is confusing. Our certified counselors analyze your profile, interests, and financial plan to recommend the best universities and courses.',
@@ -33,6 +34,7 @@ export const SERVICES: Service[] = [
   {
     id: '2',
     title: 'Scholarship Guidance',
+    slug: 'scholarship-guidance',
     icon: 'award',
     description: 'Dedicated support to help you identify and apply for merit-based and need-based scholarships globally.',
     fullDescription: "Education shouldn't be a burden. We help you identify and apply for merit-based, government, and university-specific scholarships.",
@@ -54,6 +56,7 @@ export const SERVICES: Service[] = [
     id: '3',
     title: 'Test Preparation',
     icon: 'book-open',
+     slug: 'test-preparation',
     description: 'Comprehensive preparation classes for IELTS, PTE, JLPT, NAT, and TOPIK with experienced instructors and mock tests.',
     fullDescription: 'Get the scores you need. We offer intensive preparation classes for IELTS, PTE, JLPT, and TOPIK with experienced instructors and weekly mock tests.',
     points: ['Free Mock Tests', 'Updated Materials', 'Flexible Timing'],
@@ -73,6 +76,7 @@ export const SERVICES: Service[] = [
   {
     id: '4',
     title: 'Visa Documentation',
+    slug: 'visa-documentation',
     icon: 'file-check',
     description: 'Meticulous assistance with visa applications, financial documentation, and interview preparation to ensure high success rates.',
     fullDescription: 'One small mistake can lead to visa rejection. We meticulously guide you through financial documents, SOP writing, and form filling to ensure a 98% success rate.',
@@ -93,6 +97,7 @@ export const SERVICES: Service[] = [
   {
     id: '5',
     title: 'Student Accommodation',
+    slug: 'student-accommodation',
     icon: 'home',
     description: 'Assistance in finding safe and affordable accommodation near your university.',
     fullDescription: "We don't just leave you at the airport. We assist in finding safe and affordable accommodation near your university before you even fly.",
@@ -113,6 +118,7 @@ export const SERVICES: Service[] = [
   {
     id: '6',
     title: 'Health Insurance',
+    slug: 'health-insurance',
     icon: 'heart',
     description: 'Help choosing the best and most affordable student health insurance plans.',
     fullDescription: 'Mandatory for most countries, we help you choose the best and most affordable student health insurance plans (OSHC, etc.).',
