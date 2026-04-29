@@ -1,6 +1,8 @@
 import Destinations from "./components/Destinations";
 import Hero from "./components/Hero";
+import LanguagePrep from "./components/LanguagePrep";
 import Services from "./components/Services";
+import WhyChooseUs from "./components/WhyChooseUs";
 
 
 export default function Home() {
@@ -9,6 +11,8 @@ export default function Home() {
         <Hero/>
         <Services/>
         <Destinations/>
+        <LanguagePrep/>
+        <WhyChooseUs/>
       </main>
   );
 }
