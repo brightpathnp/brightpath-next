@@ -175,7 +175,7 @@ export default function ServiceDetailClient({ service }: ServiceDetailClientProp
                       height={128}
                       className="w-32 h-32 rounded-[2rem] object-cover border-4 border-white shadow-lg mx-auto"
                     />
-                    <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-white text-white rounded-xl flex items-center justify-center border-2 border-white shadow-lg">
+                    <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-brand-blue text-white rounded-xl flex items-center justify-center border-2 border-white shadow-lg">
                       <Star className="w-5 h-5 fill-white" aria-hidden="true" />
                     </div>
                   </div>
