@@ -31,17 +31,17 @@ export default function DestinationDetailClient({ destination }: DestinationDeta
 
   return (
     <div className="min-h-screen bg-slate-50 pb-24">
-      <section className="relative overflow-hidden bg-gradient-to-r from-[#214aaf] to-brand-blue py-16 md:py-24">
+      <section className="relative overflow-hidden bg-slate-900 py-16 md:py-24">
         <div className="absolute inset-0 z-0">
           <Image
             src={destination.image}
             alt={destination.country}
             fill
-            className="object-cover opacity-20"
+            className="object-cover opacity-100"
             priority
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#214aaf]/90 to-brand-blue/80 z-0" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/70 to-slate-900/40 z-0" />
 
         <div className="max-w-7xl mx-auto px-4 relative z-10">
           <Link

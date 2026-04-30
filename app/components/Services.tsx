@@ -11,9 +11,9 @@ function getIcon(iconName: string): React.ElementType {
   return (LucideIcons as unknown as Record<string, React.ElementType>)[key] ?? LucideIcons.Globe;
 }
 
-export default function Services() {
+export default function Services(): JSX.Element {
   return (
-    <section id="services" className="py-24 bg-white">
+    <section id="services" className="py-24 bg-white font-sans">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
           <div className="max-w-2xl">
@@ -41,7 +41,7 @@ export default function Services() {
                 href={`/services/${service.slug}`}
                 className="group p-10 rounded-[2rem] bg-slate-50 border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2 transition-all duration-500 relative overflow-hidden"
               >
-                <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center mb-8 text-brand-blue shadow-sm border border-slate-100 group-hover:scale-110 group-hover:border-brand-blue/30 group-hover:shadow-md transition-all duration-300">
+                <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center mb-8 text-brand-blue group-hover:bg-brand-blue group-hover:text-white transition-all shadow-sm">
                   <Icon className="w-7 h-7" aria-hidden="true" />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-brand-blue transition-colors">

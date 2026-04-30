@@ -97,7 +97,7 @@ export default function Header(): React.JSX.Element {
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="shrink-0">
             <span className="text-xl font-bold text-black tracking-tight">
-              BrightPath
+              BrightPath.
             </span>
           </Link>
 
@@ -161,7 +161,7 @@ export default function Header(): React.JSX.Element {
           <div className="hidden lg:flex items-center">
             <Link
               href="/contact"
-              className="bg-brand-blue text-white text-xs font-black px-4 py-2 rounded-lg transition-colors hover:opacity-90"
+              className="bg-brand-blue text-white text-xs font-black px-4 py-2 rounded-lg transition-colors hover:opacity-90 cursor-pointer"
             >
               Free Consultation
             </Link>

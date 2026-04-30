@@ -1,87 +1,76 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Globe2, GraduationCap } from 'lucide-react';
+import { ArrowRight, Check } from 'lucide-react';
 import { DESTINATIONS } from '@/lib/constants';
 import type { Destination } from '@/types';
 
-export default function Destinations(): React.JSX.Element {
-  const featuredDestinations = DESTINATIONS.slice(0, 6);
-
+export default function Destinations(): JSX.Element {
   return (
-    <section id="destinations" className="py-24 bg-slate-50">
+    <section id="destinations" className="py-24 bg-slate-50 font-sans">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
-          <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-4 py-2 mb-4 rounded-full border border-blue-100 bg-blue-50 text-brand-blue">
-              <Globe2 className="w-4 h-4" aria-hidden="true" />
-              <span className="text-xs font-black uppercase tracking-widest">
-                Study Destinations
-              </span>
-            </div>
+        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+          <div className="max-w-3xl">
             <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight">
-              Explore countries where your next chapter can begin.
+              Top Destinations
             </h2>
+            <p className="text-slate-500 mt-6 text-xl font-light leading-relaxed">
+              Discover your next academic home. From the high-tech cities of Japan to the research
+              hubs of Australia.
+            </p>
           </div>
           <Link
             href="/destinations"
-            className="inline-flex items-center gap-2 text-brand-blue text-sm font-bold uppercase tracking-widest transition-all hover:gap-3"
+            className="px-10 py-4 bg-brand-blue text-white rounded-full font-bold shadow-xl shadow-blue-500/20 hover:scale-105 transition-all whitespace-nowrap"
           >
-            View All Destinations
-            <ArrowRight className="w-4 h-4" aria-hidden="true" />
+            Explore All 15+ Countries
           </Link>
         </div>
 
-        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
-          {featuredDestinations.map((destination: Destination) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {DESTINATIONS.slice(0, 6).map((dest: Destination) => (
             <Link
-              key={destination.id}
-              href={`/destinations/${destination.id}`}
-              className="group relative overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-900/10"
+              key={dest.id}
+              href={`/destinations/${dest.id}`}
+              className="group relative h-[400px] block rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-white"
             >
-              <div className="relative h-72 overflow-hidden">
-                <Image
-                  src={destination.image}
-                  alt={`${destination.country} study destination`}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/30 to-transparent" />
+              <Image
+                src={dest.image}
+                alt={dest.country}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
+              />
 
-                <div className="absolute top-5 left-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 backdrop-blur-md">
-                  <GraduationCap className="w-4 h-4 text-white" aria-hidden="true" />
-                  <span className="text-[10px] font-black uppercase tracking-widest text-white">
-                    {destination.count}+ Programs
-                  </span>
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/60 to-slate-900/20 opacity-80 group-hover:opacity-95 transition-all duration-500" />
+
+              <div className="absolute inset-0 p-8 flex flex-col justify-end text-white">
+                <div className="absolute top-6 left-6 bg-brand-blue/90 backdrop-blur-md px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest shadow-lg">
+                  {dest.count}+ Institutions
                 </div>
 
-                <div className="absolute bottom-5 left-5 right-5">
-                  <p className="mb-2 text-[10px] font-black uppercase tracking-[0.25em] text-blue-200">
-                    Featured Country
-                  </p>
-                  <h3 className="text-3xl font-black tracking-tight text-white transition-colors group-hover:text-blue-200">
-                    {destination.country}
+                <div className="relative z-10">
+                  <h3 className="text-2xl font-black mb-1 tracking-tight group-hover:text-blue-100 transition-colors">
+                    {dest.country}
                   </h3>
-                  <p className="mt-2 max-w-sm text-sm font-medium leading-relaxed text-blue-50/90">
-                    {destination.highlight}
+                  <p className="text-xs font-bold text-white mb-4 group-hover:text-sky-300 transition-colors">
+                    {dest.highlight}
                   </p>
-                </div>
-              </div>
 
-              <div className="p-8">
-                <div className="mb-6 flex flex-wrap gap-2">
-                  {destination.features.slice(0, 3).map((feature) => (
-                    <span
-                      key={feature}
-                      className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-[10px] font-black uppercase tracking-wider text-slate-500 transition-colors group-hover:border-blue-100 group-hover:text-brand-blue"
-                    >
-                      {feature}
-                    </span>
-                  ))}
-                </div>
-                <div className="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-brand-blue transition-all group-hover:gap-3">
-                  Explore Destination
-                  <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                  <div className="space-y-1.5 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-75">
+                    {dest.features.slice(0, 3).map((feature, idx) => (
+                      <div key={idx} className="flex items-start gap-2">
+                        <div className="mt-1 p-0.5 bg-green-500 rounded-full shrink-0">
+                          <Check className="w-2 h-2 text-white" />
+                        </div>
+                        <span className="text-[11px] font-bold text-slate-100 leading-tight">
+                          {feature}
+                        </span>
+                      </div>
+                    ))}
+                    <div className="pt-3 flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-white/70 group-hover:text-sky-300 transition-colors">
+                      View Details <ArrowRight className="w-3.5 h-3.5" />
+                    </div>
+                  </div>
                 </div>
               </div>
             </Link>
