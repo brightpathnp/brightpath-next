@@ -13,17 +13,17 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
   {
     label: 'Services',
     href: '/services',
     children: [
-      { label: 'All Services', href: '/services' },
-      { label: 'University Admissions', href: '/services/university-admissions' },
-      { label: 'Visa Guidance', href: '/services/visa-guidance' },
-      { label: 'Language Preparation', href: '/services/language-preparation' },
-      { label: 'Career Counseling', href: '/services/career-counseling' },
-      { label: 'Scholarship Assistance', href: '/services/scholarship-assistance' },
+        { label: 'All Services', href: '/services' },
+      { label: 'Education Counseling', href: '/services/education-counseling' },
+      { label: 'Scholarship Guidance', href: '/services/scholarship-guidance' },
+      { label: 'Test Preparation', href: '/services/test-preparation' },
+      { label: 'Visa Documentation', href: '/services/visa-documentation' },
+      { label: 'Student Accommodation', href: '/services/student-accommodation' },
+      { label: 'Health Insurance', href: '/services/health-insurance' },
     ],
   },
   {
@@ -38,6 +38,7 @@ const navItems: NavItem[] = [
       { label: 'Japan', href: '/destinations/jp' },
     ],
   },
+  { label: 'About', href: '/about' },
   { label: 'Blog', href: '/blog' },
   { label: 'Contact', href: '/contact' },
 ];
@@ -47,7 +48,7 @@ export default function Header(): React.JSX.Element {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState<boolean>(false);
   const pathname = usePathname();
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLElement>(null); // ← FIX 1: ref now covers entire header
 
   useEffect(() => {
     setMobileOpen(false);
@@ -62,7 +63,8 @@ export default function Header(): React.JSX.Element {
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent): void {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+      // ← FIX 1: check against the whole header, so mobile nav taps are included
+      if (headerRef.current && !headerRef.current.contains(e.target as Node)) {
         setOpenDropdown(null);
       }
     }
@@ -86,6 +88,7 @@ export default function Header(): React.JSX.Element {
 
   return (
     <header
+      ref={headerRef} // ← FIX 1: attach ref here
       className={`fixed top-0 sm:top-8 inset-x-0 z-40 bg-white transition-all duration-300 ${
         scrolled ? 'shadow-sm border-b border-gray-100' : ''
       }`}
@@ -98,7 +101,7 @@ export default function Header(): React.JSX.Element {
             </span>
           </Link>
 
-          <div className="hidden lg:flex items-center gap-1 ml-auto mr-4" ref={dropdownRef}>
+          <div className="hidden lg:flex items-center gap-1 ml-auto mr-4">
             <nav className="flex items-center gap-1" aria-label="Main navigation">
               {navItems.map((item) =>
                 item.children ? (
@@ -188,7 +191,8 @@ export default function Header(): React.JSX.Element {
                   <button
                     onClick={() => toggleDropdown(item.label)}
                     aria-expanded={openDropdown === item.label}
-                    className={`w-full flex items-center justify-between px-3 py-3 rounded-lg cursor-pointer transition-colors ${
+                    className={`w-full flex items-center justify-between px-3 py-3 rounded-lg text-sm font-black cursor-pointer transition-colors ${
+                      // ↑ FIX 2: added text-sm font-black — was missing, causing font mismatch
                       isActive(item.href)
                         ? 'text-blue-500 bg-blue-50'
                         : 'text-gray-700 hover:bg-gray-50'
@@ -224,7 +228,8 @@ export default function Header(): React.JSX.Element {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`block px-3 py-3 rounded-lg text-xs font-black transition-colors ${
+                  className={`block px-3 py-3 rounded-lg text-sm font-black transition-colors ${
+                    // ↑ also aligned regular mobile links to text-sm to match toggle buttons
                     isActive(item.href)
                       ? 'text-blue-500 bg-blue-50'
                       : 'text-gray-700 hover:bg-gray-50'

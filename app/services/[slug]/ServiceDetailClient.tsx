@@ -90,7 +90,7 @@ export default function ServiceDetailClient({ service }: ServiceDetailClientProp
                 <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tight">
                   How we work.
                 </h2>
-                <div className="w-20 h-2 bg-white rounded-full" />
+                <div className="w-20 h-2 bg-brand-blue rounded-full" />
                 <p className="text-slate-600 text-xl leading-relaxed font-medium">
                   {service.methodology}
                 </p>
