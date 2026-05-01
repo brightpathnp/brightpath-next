@@ -49,7 +49,7 @@ export default function Contact(): JSX.Element {
               <div>
                 <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-200 mb-2">Location</h4>
                 <p className="text-sm font-bold text-white leading-relaxed">
-                  SIMCO Tower, 5th Floor,<br />
+                  5th Floor, SIMCO Tower,<br />
                   Adwait Marga, Bagbazar,<br />
                   Kathmandu, Nepal
                 </p>
