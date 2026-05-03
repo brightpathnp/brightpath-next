@@ -3,13 +3,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { X, Send, Loader2, CheckCircle, AlertCircle, CalendarClock } from 'lucide-react';
 import { DESTINATIONS } from '@/lib/constants';
-import type { Destination } from '@/types/index';
+import type { ConsultationModalProps, Destination } from '@/types/index';
 
-interface ConsultationModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  title?: string;
-}
+
 
 export default function ConsultationModal({
   isOpen,

@@ -2,19 +2,19 @@ import type { Service, Destination, Testimonial, LanguageClass, Milestone, BlogP
 
 
 export const NAV_LINKS = [
-  { label: 'Home',         href: '/' },
-  { label: 'Services',     href: '/services' },
+  { label: 'Home', href: '/' },
+  { label: 'Services', href: '/services' },
   { label: 'Destinations', href: '/destinations' },
-  { label: 'About',        href: '/about' },
-  { label: 'Blog',         href: '/blog' },
-  { label: 'Contact',      href: '/contact' },
+  { label: 'About', href: '/about' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 export const SERVICES: Service[] = [
   {
     id: '1',
     title: 'Education Counseling',
-     slug: 'education-counseling',
+    slug: 'education-counseling',
     icon: 'globe',
     description: 'Expert guidance on choosing the right university and course tailored to your career goals in Japan, Korea, Australia, and more.',
     fullDescription: 'Choosing the right career path is confusing. Our certified counselors analyze your profile, interests, and financial plan to recommend the best universities and courses.',
@@ -27,9 +27,17 @@ export const SERVICES: Service[] = [
     ],
     credentials: ['Ministry of Social Development (MoSD) Approved', 'CTEVT TITI Trained Counselors', 'British Council Certified Experts'],
     team: [
-      { name: 'Sita Lamsal',   role: 'Chief Counselor',   credentials: ['TITI Trained', '10+ Years Exp.'],   image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200' },
-      { name: 'Bishal Gurung', role: 'Senior Consultant',  credentials: ['British Council Certified'],         image: 'https://i.pravatar.cc/150?u=bishal' },
-      { name: 'Anju Thapa',    role: 'Career Strategist',  credentials: ['CTEVT TITI Certified'],              image: 'https://i.pravatar.cc/150?u=anju' },
+      { name: 'Shreya Poudyal', role: 'Chief Counselor', credentials: ['CTEVT TITI CERTIFIED', 'MSc. Microbiology St. Xavier College (Tribhuvan University)'], 
+        image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200' },
+      { name: 'Yusha Hada', role: 'Senior Consultant', credentials: ['TEVT TITI CERTIFIED', 'Bachelor in Hotel Management (Tribhuvan University)'], 
+        image: 'https://i.pravatar.cc/150?u=bishal' },
+      {
+        name: 'Alisha Adhikari ', role: 'Career Strategist', credentials: ['British Council Certified', 'Bachelor in Business Administration & Master in Sociology (Tribhuvan University)',
+          'Miss Nepal 2018 Finalist', 'Former Cabin Crew (Airhostess) at Shree Airlines'],
+        image: 'https://i.pravatar.cc/150?u=anju'
+      },
+        { name: 'Sanju Panthi', role: 'Senior Consultant', credentials: ['British Council Certified', 'Master in Business Administration Tribhuvan University'], 
+        image: 'https://i.pravatar.cc/150?u=bishal' },
     ],
   },
   {
@@ -42,36 +50,52 @@ export const SERVICES: Service[] = [
     points: ['Merit Scholarships', 'Need-based Aid', 'Application Review'],
     methodology: 'We maintain a direct database of internal university scholarships not always advertised to the public. We guide students on crafting compelling essays and SOPs that maximize funding potential.',
     detailedProcess: [
-      { title: 'Scholarship Mapping',  desc: 'Identifying fully-funded and partial scholarships for your profile.' },
-      { title: 'Essay Mentoring',      desc: 'Professional guidance on scholarship-specific personal statements.' },
-      { title: 'Interview Coaching',   desc: 'Preparing for merit-based scholarship interviews with mock sessions.' },
+      { title: 'Scholarship Mapping', desc: 'Identifying fully-funded and partial scholarships for your profile.' },
+      { title: 'Essay Mentoring', desc: 'Professional guidance on scholarship-specific personal statements.' },
+      { title: 'Interview Coaching', desc: 'Preparing for merit-based scholarship interviews with mock sessions.' },
     ],
     credentials: ['Authorized University Representatives', 'MoSD Approved Documentation Process'],
-    team: [
-      { name: 'Kiran Thapa',  role: 'Scholarship Head',     credentials: ['University Relations Specialist'], image: 'https://i.pravatar.cc/150?u=kiran' },
-      { name: 'Rahul KC',     role: 'Grant Writer',          credentials: ['SOP Specialist'],                  image: 'https://i.pravatar.cc/150?u=rahul' },
-      { name: 'Mina Pandey',  role: 'Financial Aid Advisor', credentials: ['Global Funding Expert'],           image: 'https://i.pravatar.cc/150?u=mina' },
+   team: [
+      { name: 'Shreya Poudyal', role: 'Chief Counselor', credentials: ['CTEVT TITI CERTIFIED', 'MSc. Microbiology St. Xavier College (Tribhuvan University)'], 
+        image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200' },
+      { name: 'Yusha Hada', role: 'Senior Consultant', credentials: ['TEVT TITI CERTIFIED', 'Bachelor in Hotel Management (Tribhuvan University)'], 
+        image: 'https://i.pravatar.cc/150?u=bishal' },
+      {
+        name: 'Alisha Adhikari ', role: 'Career Strategist', credentials: ['British Council Certified', 'Bachelor in Business Administration & Master in Sociology (Tribhuvan University)',
+          'Miss Nepal 2018 Finalist', 'Former Cabin Crew (Airhostess) at Shree Airlines'],
+        image: 'https://i.pravatar.cc/150?u=anju'
+      },
+        { name: 'Sanju Panthi', role: 'Senior Consultant', credentials: ['British Council Certified', 'Master in Business Administration Tribhuvan University'], 
+        image: 'https://i.pravatar.cc/150?u=bishal' },
     ],
   },
   {
     id: '3',
     title: 'Test Preparation',
     icon: 'book-open',
-     slug: 'test-preparation',
+    slug: 'test-preparation',
     description: 'Comprehensive preparation classes for IELTS, PTE, JLPT, NAT, and TOPIK with experienced instructors and mock tests.',
     fullDescription: 'Get the scores you need. We offer intensive preparation classes for IELTS, PTE, JLPT, and TOPIK with experienced instructors and weekly mock tests.',
     points: ['Free Mock Tests', 'Updated Materials', 'Flexible Timing'],
     methodology: 'Interactive classroom sessions combined with digital lab practice. We focus on weakness-spotting and time management strategies through weekly full-length mock exams.',
     detailedProcess: [
-      { title: 'Diagnostic Testing',  desc: 'Initial test to determine your baseline and target areas.' },
-      { title: 'Intensive Training',  desc: 'Daily sessions covering Reading, Writing, Listening, and Speaking.' },
-      { title: 'Feedback Loops',      desc: 'Detailed individual feedback after every mock test.' },
+      { title: 'Diagnostic Testing', desc: 'Initial test to determine your baseline and target areas.' },
+      { title: 'Intensive Training', desc: 'Daily sessions covering Reading, Writing, Listening, and Speaking.' },
+      { title: 'Feedback Loops', desc: 'Detailed individual feedback after every mock test.' },
     ],
     credentials: ['British Council Certified Instructors', 'Official PTE Lab Facilities', 'Japanese/Korean Native Trained Staff'],
     team: [
-      { name: 'Nisha Rai',      role: 'Lead IELTS Trainer',  credentials: ['British Council Certified'], image: 'https://i.pravatar.cc/150?u=nisha' },
-      { name: 'Hiroshi Tanaka', role: 'Japanese Expert',     credentials: ['JLPT N1 Certified'],        image: 'https://i.pravatar.cc/150?u=hiroshi' },
-      { name: 'Min-ho Park',    role: 'Korean Specialist',   credentials: ['TOPIK Level 6'],             image: 'https://i.pravatar.cc/150?u=minho' },
+      { name: 'Shreya Poudyal', role: 'Chief Counselor', credentials: ['CTEVT TITI CERTIFIED', 'MSc. Microbiology St. Xavier College (Tribhuvan University)'], 
+        image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200' },
+      { name: 'Yusha Hada', role: 'Senior Consultant', credentials: ['TEVT TITI CERTIFIED', 'Bachelor in Hotel Management (Tribhuvan University)'], 
+        image: 'https://i.pravatar.cc/150?u=bishal' },
+      {
+        name: 'Alisha Adhikari ', role: 'Career Strategist', credentials: ['British Council Certified', 'Bachelor in Business Administration & Master in Sociology (Tribhuvan University)',
+          'Miss Nepal 2018 Finalist', 'Former Cabin Crew (Airhostess) at Shree Airlines'],
+        image: 'https://i.pravatar.cc/150?u=anju'
+      },
+        { name: 'Sanju Panthi', role: 'Senior Consultant', credentials: ['British Council Certified', 'Master in Business Administration Tribhuvan University'], 
+        image: 'https://i.pravatar.cc/150?u=bishal' },
     ],
   },
   {
@@ -84,15 +108,23 @@ export const SERVICES: Service[] = [
     points: ['Financial Guidance', 'SOP Assistance', 'Mock Interviews'],
     methodology: 'Double-tier verification of all documentation. We simulate the actual embassy interview environment multiple times until the student is confident and clear.',
     detailedProcess: [
-      { title: 'Doc Collection',  desc: 'Systematic gathering of academic, financial, and legal papers.' },
-      { title: 'SOP Refinement',  desc: 'Turning your story into a professional and persuasive statement.' },
-      { title: 'Final Review',    desc: 'MoSD-approved standards check before submission.' },
+      { title: 'Doc Collection', desc: 'Systematic gathering of academic, financial, and legal papers.' },
+      { title: 'SOP Refinement', desc: 'Turning your story into a professional and persuasive statement.' },
+      { title: 'Final Review', desc: 'MoSD-approved standards check before submission.' },
     ],
     credentials: ['Approved by Nepal Ministry of Education', 'Certified Documentation Experts'],
-    team: [
-      { name: 'Sarita Poudel', role: 'Documentation Head', credentials: ['Compliance Specialist'], image: 'https://i.pravatar.cc/150?u=sarita' },
-      { name: 'Bibek Shah',    role: 'Visa Liaison',        credentials: ['Embassy Relations'],     image: 'https://i.pravatar.cc/150?u=bibek' },
-      { name: 'Gopal Ray',     role: 'Finance Analyst',     credentials: ['Verification Expert'],   image: 'https://i.pravatar.cc/150?u=gopal' },
+     team: [
+      { name: 'Shreya Poudyal', role: 'Chief Counselor', credentials: ['CTEVT TITI CERTIFIED', 'MSc. Microbiology St. Xavier College (Tribhuvan University)'], 
+        image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200' },
+      { name: 'Yusha Hada', role: 'Senior Consultant', credentials: ['TEVT TITI CERTIFIED', 'Bachelor in Hotel Management (Tribhuvan University)'], 
+        image: 'https://i.pravatar.cc/150?u=bishal' },
+      {
+        name: 'Alisha Adhikari ', role: 'Career Strategist', credentials: ['British Council Certified', 'Bachelor in Business Administration & Master in Sociology (Tribhuvan University)',
+          'Miss Nepal 2018 Finalist', 'Former Cabin Crew (Airhostess) at Shree Airlines'],
+        image: 'https://i.pravatar.cc/150?u=anju'
+      },
+        { name: 'Sanju Panthi', role: 'Senior Consultant', credentials: ['British Council Certified', 'Master in Business Administration Tribhuvan University'], 
+        image: 'https://i.pravatar.cc/150?u=bishal' },
     ],
   },
   {
@@ -105,15 +137,23 @@ export const SERVICES: Service[] = [
     points: ['Dormitory Booking', 'Shared Apartments', 'Homestays'],
     methodology: 'Partnering with global housing providers like Casita and University Living to offer students vetted, safe, and student-friendly living options.',
     detailedProcess: [
-      { title: 'Budget Planning',  desc: 'Finding options that fit your monthly living allowance.' },
-      { title: 'Vetting Process',  desc: 'Ensuring security and proximity to campus.' },
-      { title: 'Booking Support',  desc: 'Handling contracts and deposit transfers safely.' },
+      { title: 'Budget Planning', desc: 'Finding options that fit your monthly living allowance.' },
+      { title: 'Vetting Process', desc: 'Ensuring security and proximity to campus.' },
+      { title: 'Booking Support', desc: 'Handling contracts and deposit transfers safely.' },
     ],
     credentials: ['Global Housing Partnership Network'],
     team: [
-      { name: 'Prabin Joshi', role: 'Post-Arrival Lead',    credentials: ['Intl Relations Expert'], image: 'https://i.pravatar.cc/150?u=prabin' },
-      { name: 'Deepa Oli',    role: 'Housing Coordinator',  credentials: ['Student Welfare'],        image: 'https://i.pravatar.cc/150?u=deepa' },
-      { name: 'Sanjay Lama',  role: 'Travel Support',       credentials: ['Logistics Manager'],      image: 'https://i.pravatar.cc/150?u=sanjay' },
+      { name: 'Shreya Poudyal', role: 'Chief Counselor', credentials: ['CTEVT TITI CERTIFIED', 'MSc. Microbiology St. Xavier College (Tribhuvan University)'], 
+        image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200' },
+      { name: 'Yusha Hada', role: 'Senior Consultant', credentials: ['TEVT TITI CERTIFIED', 'Bachelor in Hotel Management (Tribhuvan University)'], 
+        image: 'https://i.pravatar.cc/150?u=bishal' },
+      {
+        name: 'Alisha Adhikari ', role: 'Career Strategist', credentials: ['British Council Certified', 'Bachelor in Business Administration & Master in Sociology (Tribhuvan University)',
+          'Miss Nepal 2018 Finalist', 'Former Cabin Crew (Airhostess) at Shree Airlines'],
+        image: 'https://i.pravatar.cc/150?u=anju'
+      },
+        { name: 'Sanju Panthi', role: 'Senior Consultant', credentials: ['British Council Certified', 'Master in Business Administration Tribhuvan University'], 
+        image: 'https://i.pravatar.cc/150?u=bishal' },
     ],
   },
   {
@@ -126,15 +166,23 @@ export const SERVICES: Service[] = [
     points: ['OSHC (Australia)', 'IHS (UK)', 'Travel Insurance'],
     methodology: 'Comparison of all major health providers to find plans that offer maximum coverage for pre-existing conditions and mental health support.',
     detailedProcess: [
-      { title: 'Requirement Check',  desc: 'Confirming mandatory insurance levels for your specific visa.' },
-      { title: 'Quote Comparison',   desc: 'Finding the most affordable premium with high coverage.' },
-      { title: 'Policy Issue',       desc: 'Instant certificate generation for visa application.' },
+      { title: 'Requirement Check', desc: 'Confirming mandatory insurance levels for your specific visa.' },
+      { title: 'Quote Comparison', desc: 'Finding the most affordable premium with high coverage.' },
+      { title: 'Policy Issue', desc: 'Instant certificate generation for visa application.' },
     ],
     credentials: ['Authorized Insurance Agent Partnerships'],
     team: [
-      { name: 'Rita Adhikari',   role: 'Insurance Specialist', credentials: ['Certified Advisor'],       image: 'https://i.pravatar.cc/150?u=rita' },
-      { name: 'Sunil Jha',       role: 'Support Analyst',      credentials: ['Compliance Expert'],       image: 'https://i.pravatar.cc/150?u=sunil' },
-      { name: 'Elena Shrestha',  role: 'Claim Consultant',     credentials: ['Global Policy Specialist'], image: 'https://i.pravatar.cc/150?u=elena' },
+      { name: 'Shreya Poudyal', role: 'Chief Counselor', credentials: ['CTEVT TITI CERTIFIED', 'MSc. Microbiology St. Xavier College (Tribhuvan University)'], 
+        image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200' },
+      { name: 'Yusha Hada', role: 'Senior Consultant', credentials: ['TEVT TITI CERTIFIED', 'Bachelor in Hotel Management (Tribhuvan University)'], 
+        image: 'https://i.pravatar.cc/150?u=bishal' },
+      {
+        name: 'Alisha Adhikari ', role: 'Career Strategist', credentials: ['British Council Certified', 'Bachelor in Business Administration & Master in Sociology (Tribhuvan University)',
+          'Miss Nepal 2018 Finalist', 'Former Cabin Crew (Airhostess) at Shree Airlines'],
+        image: 'https://i.pravatar.cc/150?u=anju'
+      },
+        { name: 'Sanju Panthi', role: 'Senior Consultant', credentials: ['British Council Certified', 'Master in Business Administration Tribhuvan University'], 
+        image: 'https://i.pravatar.cc/150?u=bishal' },
     ],
   },
 ];
@@ -319,12 +367,12 @@ export const DESTINATIONS: Destination[] = [
 ];
 
 export const LANGUAGES: LanguageClass[] = [
-  { name: 'IELTS',    icon: 'globe' },
-  { name: 'PTE',      icon: 'monitor' },
+  { name: 'IELTS', icon: 'globe' },
+  { name: 'PTE', icon: 'monitor' },
   { name: 'Duolingo', icon: 'feather' },
-  { name: 'Korean',   icon: 'book' },
+  { name: 'Korean', icon: 'book' },
   { name: 'Japanese', icon: 'sun' },
-  { name: 'German',   icon: 'map' },
+  { name: 'German', icon: 'map' },
 ];
 
 export const TESTIMONIALS: Testimonial[] = [
@@ -352,11 +400,11 @@ export const TESTIMONIALS: Testimonial[] = [
 ];
 
 export const MILESTONES: Milestone[] = [
-  { year: '2019', title: 'Establishment',       desc: 'Founded with a mission to guide students. Started South Korea program.' },
+  { year: '2019', title: 'Establishment', desc: 'Founded with a mission to guide students. Started South Korea program.' },
   { year: '2020', title: 'Pandemic Resilience', desc: 'Adapted to digital counseling during COVID-19, supporting students remotely.' },
-  { year: '2022', title: 'Recovery & Growth',   desc: 'Operations returned to full scale. Record number of visas approved.' },
-  { year: '2023', title: 'New Horizons',        desc: 'Expanded to UAE and Europe. Partnered with 50+ new universities.' },
-  { year: '2025', title: 'Expansion',           desc: 'New corporate office launched. Integrated advanced language labs.' },
+  { year: '2022', title: 'Recovery & Growth', desc: 'Operations returned to full scale. Record number of visas approved.' },
+  { year: '2023', title: 'New Horizons', desc: 'Expanded to UAE and Europe. Partnered with 50+ new universities.' },
+  { year: '2025', title: 'Expansion', desc: 'New corporate office launched. Integrated advanced language labs.' },
 ];
 
 const INITIAL_BLOG_POSTS: BlogPost[] = [

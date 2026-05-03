@@ -1,3 +1,9 @@
+export interface ConsultationModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  title?: string;
+}
+
 export interface Instructor {
   name: string;
   role: string;

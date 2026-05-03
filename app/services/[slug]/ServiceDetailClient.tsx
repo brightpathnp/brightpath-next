@@ -164,9 +164,9 @@ export default function ServiceDetailClient({ service }: ServiceDetailClientProp
                 Our team consists of certified professionals with years of experience in the education sector.
               </p>
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {service.team.map((member, i) => (
-                <div key={i} className="bg-slate-50 p-8 rounded-[3rem] border border-slate-100 hover:shadow-2xl transition-all duration-500 text-center">
+                <div key={i} className="bg-slate-50 p-6 rounded-[3rem] border border-slate-100 hover:shadow-2xl transition-all duration-500 text-center">
                   <div className="relative inline-block mb-6">
                     <Image
                       src={member.image}
@@ -223,7 +223,7 @@ export default function ServiceDetailClient({ service }: ServiceDetailClientProp
       <ConsultationModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
-        serviceTitle={service.title}
+        title={service.title}
       />
     </div>
   );
