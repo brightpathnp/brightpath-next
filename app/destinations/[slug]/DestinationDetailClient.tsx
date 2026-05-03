@@ -215,6 +215,24 @@ export default function DestinationDetailClient({ destination }: DestinationDeta
                   </div>
                 )}
 
+                {details.intakes && (
+                  <div>
+                    <h2 className="text-2xl font-black text-slate-900 tracking-tight mb-4 flex items-center gap-3">
+                      <Calendar className="w-6 h-6 text-brand-blue" aria-hidden="true" />
+                      Intake Periods
+                    </h2>
+                    <div className="w-12 h-1.5 bg-brand-blue rounded-full mb-6" />
+                    <div className="space-y-2">
+                      {details.intakes.map((intake) => (
+                        <div key={intake} className="flex items-center gap-2.5 py-2 border-b border-slate-100 last:border-0">
+                          <div className="w-2 h-2 rounded-full bg-brand-blue shrink-0" />
+                          <span className="text-sm font-medium text-slate-700">{intake}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
                 {(details.admissionChecklist || details.visaChecklist) && (
                   <div>
                     <h2 className="text-2xl font-black text-slate-900 tracking-tight mb-4 flex items-center gap-3">
@@ -315,23 +333,6 @@ export default function DestinationDetailClient({ destination }: DestinationDeta
                     <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
                   </Link>
                 </div>
-
-                {details.intakes && (
-                  <div className="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm">
-                    <h3 className="text-xs font-black uppercase tracking-widest text-brand-blue mb-4 flex items-center gap-2">
-                      <Calendar className="w-4 h-4" aria-hidden="true" />
-                      Intake Periods
-                    </h3>
-                    <div className="space-y-2">
-                      {details.intakes.map((intake) => (
-                        <div key={intake} className="flex items-center gap-2.5 py-2 border-b border-slate-50 last:border-0">
-                          <div className="w-2 h-2 rounded-full bg-brand-blue shrink-0" />
-                          <span className="text-sm font-medium text-slate-700">{intake}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
               </div>
             </div>
           </>
