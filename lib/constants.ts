@@ -1,4 +1,5 @@
-import type { Service, Destination, Testimonial, LanguageClass, Milestone, BlogPost } from '@/types';
+import type { Service, Destination, Testimonial, LanguageClass, Milestone, BlogPost, Scholarship } from '@/types';
+
 
 export const NAV_LINKS = [
   { label: 'Home',         href: '/' },

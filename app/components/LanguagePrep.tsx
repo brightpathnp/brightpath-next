@@ -1,4 +1,6 @@
+import type React from 'react';
 import * as LucideIcons from 'lucide-react';
+import type { LanguageClass } from '@/types';
 import { LANGUAGES } from '@/lib/constants';
 
 export default function LanguagePrep(): React.JSX.Element {
@@ -16,7 +18,7 @@ export default function LanguagePrep(): React.JSX.Element {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
-          {LANGUAGES.map((lang) => {
+          {LANGUAGES.map((lang: LanguageClass) => {
             const iconKey = lang.icon.charAt(0).toUpperCase() + lang.icon.slice(1);
             const Icon =
               (LucideIcons as Record<string, React.ComponentType<{ className?: string }>>)[iconKey] ??
