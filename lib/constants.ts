@@ -32,11 +32,11 @@ export const SERVICES: Service[] = [
       { name: 'Yusha Hada', slug: 'yusha-hada', role: 'Senior Consultant', credentials: ['TEVT TITI CERTIFIED', 'Bachelor in Hotel Management (Tribhuvan University)'], 
         image: 'https://i.pravatar.cc/150?u=bishal' },
       {
-        name: 'Alisha Adhikari ', slug: 'alisha-adhikari', role: 'Career Strategist', credentials: ['British Council Certified', 'Bachelor in Business Administration & Master in Sociology (Tribhuvan University)',
+        name: 'Alisha Adhikari ', slug: 'alisha-adhikari', role: 'Center Manager', credentials: ['British Council Certified', 'Bachelor in Business Administration & Master in Sociology (Tribhuvan University)',
           'Miss Nepal 2018 Finalist', 'Former Cabin Crew (Airhostess) at Shree Airlines'],
         image: 'https://i.pravatar.cc/150?u=anju'
       },
-        { name: 'Sanju Panthi', slug: 'sanju-panthi', role: 'Senior Consultant', credentials: ['British Council Certified', 'Master in Business Administration Tribhuvan University'], 
+        { name: 'Sanju Panthi', slug: 'sanju-panthi', role: 'Documentation Officer', credentials: ['British Council Certified', 'Master in Business Administration Tribhuvan University'], 
         image: 'https://i.pravatar.cc/150?u=bishal' },
     ],
   },
