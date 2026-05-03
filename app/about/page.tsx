@@ -212,8 +212,8 @@ export default function AboutPage(): JSX.Element {
               </div>
 
               {/* Credentials Sidebar */}
-              <div className="lg:col-span-2">
-                <div className="p-8 bg-slate-900 rounded-[2.5rem] text-white h-full">
+              <div className="lg:col-span-2 self-start">
+                <div className="p-8 bg-slate-900 rounded-[2.5rem] text-white">
                   <h4 className="text-xl font-black mb-6 border-b border-white/10 pb-4">Our Credentials</h4>
                   <ul className="space-y-5">
                     {credentials.map((cred) => (
