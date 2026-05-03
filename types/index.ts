@@ -9,6 +9,7 @@ export interface Instructor {
   role: string;
   credentials: string[];
   image: string;
+  slug: string;
 }
 
 export interface Service {

@@ -131,9 +131,9 @@ export default function ServiceDetailClient({ service }: ServiceDetailClientProp
                 </div>
               )}
 
-              <div 
-               style={{ background: 'linear-gradient(to right, #214aaf, #3B82F6)' }}
-              className="bg-white p-10 rounded-[3rem] text-white shadow-xl relative overflow-hidden">
+              <div
+                style={{ background: 'linear-gradient(to right, #214aaf, #3B82F6)' }}
+                className="bg-white p-10 rounded-[3rem] text-white shadow-xl relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
                 <h3 className="text-2xl font-black mb-4 relative z-10">Ready to Start?</h3>
                 <p className="text-blue-100 text-sm font-medium mb-8 relative z-10">
@@ -142,7 +142,7 @@ export default function ServiceDetailClient({ service }: ServiceDetailClientProp
                 <button
                   onClick={() => setModalOpen(true)}
                   className="w-full py-4 bg-white font-black text-[11px] rounded-2xl uppercase tracking-widest shadow-xl hover:scale-105 active:scale-95 transition-all relative z-10"
-                  style={{color: '#3b8df6'}}
+                  style={{ color: '#3b8df6' }}
                 >
                   Book Session Now
                 </button>
@@ -166,7 +166,11 @@ export default function ServiceDetailClient({ service }: ServiceDetailClientProp
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {service.team.map((member, i) => (
-                <div key={i} className="bg-slate-50 p-6 rounded-[3rem] border border-slate-100 hover:shadow-2xl transition-all duration-500 text-center">
+                <Link
+                  key={i}
+                  href={`/team/${member.slug}`}
+                  className="group bg-slate-50 p-6 rounded-[3rem] border border-slate-100 hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 text-center block"
+                >
                   <div className="relative inline-block mb-6">
                     <Image
                       src={member.image}
@@ -179,18 +183,26 @@ export default function ServiceDetailClient({ service }: ServiceDetailClientProp
                       <Star className="w-5 h-5 fill-white" aria-hidden="true" />
                     </div>
                   </div>
-                  <h3 className="text-xl font-black text-slate-900 mb-1">{member.name}</h3>
+                  <h3 className="text-xl font-black text-slate-900 mb-1 group-hover:text-brand-blue transition-colors">
+                    {member.name}
+                  </h3>
                   <p className="text-brand-blue text-[10px] font-black uppercase tracking-widest mb-6">
                     {member.role}
                   </p>
                   <div className="flex flex-wrap justify-center gap-2">
                     {member.credentials.map((c, idx) => (
-                      <span key={idx} className="px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-[9px] font-black uppercase tracking-wider text-slate-400">
+                      <span
+                        key={idx}
+                        className="px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-[9px] font-black uppercase tracking-wider text-slate-400"
+                      >
                         {c}
                       </span>
                     ))}
                   </div>
-                </div>
+                  <div className="mt-6 flex items-center justify-center gap-1.5 text-[10px] font-black text-brand-blue uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                    View Profile <ChevronLeft className="w-3.5 h-3.5 rotate-180" aria-hidden="true" />
+                  </div>
+                </Link>
               ))}
             </div>
           </div>

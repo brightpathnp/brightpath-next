@@ -212,7 +212,7 @@ export default function ConsultationModal({
                 </div>
               </div>
               <p className="text-[10px] text-blue-400 font-medium mt-2">
-                Office hours: Sun – Fri, 9:00 AM – 6:00 PM (NPT)
+                Office hours: Sun – Fri, 9:00 AM – 5:00 PM (NPT)
               </p>
             </div>
 
