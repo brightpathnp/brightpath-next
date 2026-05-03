@@ -93,16 +93,16 @@ export default function ServicesPage(): React.JSX.Element {
       {/* CTA */}
       <section className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="bg-[#0f172a] rounded-[4rem] p-16 md:p-24 text-center shadow-2xl relative overflow-hidden">
+          <div className="bg-slate-100 rounded-[4rem] p-16 md:p-24 text-center shadow-2xl relative overflow-hidden">
             <div
               className="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2"
               aria-hidden="true"
             />
             <div className="relative z-10 space-y-8">
-              <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight">
+              <h2 className="text-4xl md:text-6xl font-bold text-black tracking-tight">
                 Need Personalized Guidance?
               </h2>
-              <p className="text-blue-100 text-lg md:text-xl font-medium max-w-2xl mx-auto leading-relaxed opacity-90">
+              <p className="text-blue-100 text-lg md:text-xl font-medium max-w-2xl mx-auto leading-relaxed opacity-90 text-transparent bg-clip-text bg-gradient-brand">
                 Speak with our certified counselors today and build your global roadmap.
               </p>
               <button

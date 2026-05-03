@@ -212,13 +212,13 @@ export default function ServiceDetailClient({ service }: ServiceDetailClientProp
       {/* Bottom CTA */}
       <section className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="bg-[#0f172a] p-16 md:p-24 rounded-[4rem] text-center text-white shadow-2xl relative overflow-hidden">
+          <div className="bg-slate-100 p-16 md:p-24 rounded-[4rem] text-center text-black shadow-2xl relative overflow-hidden">
             <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2" />
             <div className="relative z-10 space-y-8">
               <h2 className="text-4xl md:text-6xl font-bold tracking-tight">
                 Need Personalized Guidance?
               </h2>
-              <p className="text-blue-100 text-lg md:text-xl font-medium max-w-2xl mx-auto leading-relaxed opacity-90">
+              <p className="text-lg md:text-xl font-medium max-w-2xl mx-auto leading-relaxed text-transparent bg-clip-text bg-gradient-brand">
                 Speak with our certified counselors today and build your global roadmap.
               </p>
               <button

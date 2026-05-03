@@ -381,13 +381,13 @@ export default function DestinationDetailClient({ destination }: DestinationDeta
       </div>
 
       <section className="max-w-7xl mx-auto px-4">
-        <div className="bg-[#0f172a] p-16 md:p-20 rounded-[4rem] text-center text-white shadow-2xl relative overflow-hidden">
+        <div className="bg-slate-100 p-16 md:p-20 rounded-[4rem] text-center text-black shadow-2xl relative overflow-hidden">
           <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
           <div className="relative z-10 space-y-6">
             <h2 className="text-3xl md:text-5xl font-black tracking-tight">
               Ready to Begin Your Journey?
             </h2>
-            <p className="text-blue-100 text-lg font-medium max-w-xl mx-auto leading-relaxed opacity-90">
+            <p className="text-lg md:text-xl font-medium max-w-2xl mx-auto leading-relaxed text-transparent bg-clip-text bg-gradient-brand">
               BrightPath handles every step — admission, visa, language prep, and more.
             </p>
             <button
