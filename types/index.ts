@@ -11,6 +11,7 @@ export interface Service {
   description: string;
   fullDescription?: string;
   icon: string;
+  slug: string;
   points?: string[];
   methodology?: string;
   detailedProcess?: { title: string; desc: string }[];
