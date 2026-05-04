@@ -29,7 +29,7 @@ export const SERVICES: Service[] = [
    team: [
       { name: 'Shreya Poudyal', slug: 'shreya-poudyal', role: 'Chief Counselor', credentials: ['CTEVT TITI CERTIFIED', 'MSc. Microbiology St. Xavier College (Tribhuvan University)'],
         image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200' },
-      { name: 'Yusha Hada', slug: 'yusha-hada', role: 'Senior Consultant', credentials: ['TEVT TITI CERTIFIED', 'Bachelor in Hotel Management (Tribhuvan University)'],
+      { name: 'Yusha Hada', slug: 'yusha-hada', role: 'Senior Counselor', credentials: ['TEVT TITI CERTIFIED', 'Bachelor in Hotel Management (Tribhuvan University)'],
         image: 'https://i.pravatar.cc/150?u=bishal' },
       {
         name: 'Alisha Adhikari ', slug: 'alisha-adhikari', role: 'Center Manager', credentials: ['British Council Certified', 'Bachelor in Business Administration & Master in Sociology (Tribhuvan University)',
@@ -58,14 +58,14 @@ export const SERVICES: Service[] = [
   team: [
       { name: 'Shreya Poudyal', slug: 'shreya-poudyal', role: 'Chief Counselor', credentials: ['CTEVT TITI CERTIFIED', 'MSc. Microbiology St. Xavier College (Tribhuvan University)'],
         image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200' },
-      { name: 'Yusha Hada', slug: 'yusha-hada', role: 'Senior Consultant', credentials: ['TEVT TITI CERTIFIED', 'Bachelor in Hotel Management (Tribhuvan University)'],
+      { name: 'Yusha Hada', slug: 'yusha-hada', role: 'Senior Counselor', credentials: ['TEVT TITI CERTIFIED', 'Bachelor in Hotel Management (Tribhuvan University)'],
         image: 'https://i.pravatar.cc/150?u=bishal' },
       {
         name: 'Alisha Adhikari ', slug: 'alisha-adhikari', role: 'Career Strategist', credentials: ['British Council Certified', 'Bachelor in Business Administration & Master in Sociology (Tribhuvan University)',
           'Miss Nepal 2018 Finalist', 'Former Cabin Crew (Airhostess) at Shree Airlines'],
         image: 'https://i.pravatar.cc/150?u=anju'
       },
-        { name: 'Sanju Panthi', slug: 'sanju-panthi', role: 'Senior Consultant', credentials: ['British Council Certified', 'Master in Business Administration Tribhuvan University'],
+        { name: 'Sanju Panthi', slug: 'sanju-panthi', role: 'Senior Counselor', credentials: ['British Council Certified', 'Master in Business Administration Tribhuvan University'],
         image: 'https://i.pravatar.cc/150?u=bishal' },
     ],
   },
@@ -87,14 +87,14 @@ export const SERVICES: Service[] = [
     team: [
       { name: 'Shreya Poudyal', slug: 'shreya-poudyal', role: 'Chief Counselor', credentials: ['CTEVT TITI CERTIFIED', 'MSc. Microbiology St. Xavier College (Tribhuvan University)'],
         image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200' },
-      { name: 'Yusha Hada', slug: 'yusha-hada', role: 'Senior Consultant', credentials: ['TEVT TITI CERTIFIED', 'Bachelor in Hotel Management (Tribhuvan University)'],
+      { name: 'Yusha Hada', slug: 'yusha-hada', role: 'Senior Counselor', credentials: ['TEVT TITI CERTIFIED', 'Bachelor in Hotel Management (Tribhuvan University)'],
         image: 'https://i.pravatar.cc/150?u=bishal' },
       {
         name: 'Alisha Adhikari ', slug: 'alisha-adhikari', role: 'Career Strategist', credentials: ['British Council Certified', 'Bachelor in Business Administration & Master in Sociology (Tribhuvan University)',
           'Miss Nepal 2018 Finalist', 'Former Cabin Crew (Airhostess) at Shree Airlines'],
         image: 'https://i.pravatar.cc/150?u=anju'
       },
-        { name: 'Sanju Panthi', slug: 'sanju-panthi', role: 'Senior Consultant', credentials: ['British Council Certified', 'Master in Business Administration Tribhuvan University'],
+        { name: 'Sanju Panthi', slug: 'sanju-panthi', role: 'Senior Counselor', credentials: ['British Council Certified', 'Master in Business Administration Tribhuvan University'],
         image: 'https://i.pravatar.cc/150?u=bishal' },
     ],
   },
@@ -116,14 +116,14 @@ export const SERVICES: Service[] = [
      team: [
       { name: 'Shreya Poudyal', slug: 'shreya-poudyal', role: 'Chief Counselor', credentials: ['CTEVT TITI CERTIFIED', 'MSc. Microbiology St. Xavier College (Tribhuvan University)'],
         image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200' },
-      { name: 'Yusha Hada', slug: 'yusha-hada', role: 'Senior Consultant', credentials: ['TEVT TITI CERTIFIED', 'Bachelor in Hotel Management (Tribhuvan University)'],
+      { name: 'Yusha Hada', slug: 'yusha-hada', role: 'Senior Counselor', credentials: ['TEVT TITI CERTIFIED', 'Bachelor in Hotel Management (Tribhuvan University)'],
         image: 'https://i.pravatar.cc/150?u=bishal' },
       {
         name: 'Alisha Adhikari ', slug: 'alisha-adhikari', role: 'Career Strategist', credentials: ['British Council Certified', 'Bachelor in Business Administration & Master in Sociology (Tribhuvan University)',
           'Miss Nepal 2018 Finalist', 'Former Cabin Crew (Airhostess) at Shree Airlines'],
         image: 'https://i.pravatar.cc/150?u=anju'
       },
-        { name: 'Sanju Panthi', slug: 'sanju-panthi', role: 'Senior Consultant', credentials: ['British Council Certified', 'Master in Business Administration Tribhuvan University'],
+        { name: 'Sanju Panthi', slug: 'sanju-panthi', role: 'Senior Counselor', credentials: ['British Council Certified', 'Master in Business Administration Tribhuvan University'],
         image: 'https://i.pravatar.cc/150?u=bishal' },
     ],
   },
@@ -161,14 +161,14 @@ export const SERVICES: Service[] = [
     team: [
       { name: 'Shreya Poudyal', slug: 'shreya-poudyal', role: 'Chief Counselor', credentials: ['CTEVT TITI CERTIFIED', 'MSc. Microbiology St. Xavier College (Tribhuvan University)'],
         image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200' },
-      { name: 'Yusha Hada', slug: 'yusha-hada', role: 'Senior Consultant', credentials: ['TEVT TITI CERTIFIED', 'Bachelor in Hotel Management (Tribhuvan University)'],
+      { name: 'Yusha Hada', slug: 'yusha-hada', role: 'Senior Counselor', credentials: ['TEVT TITI CERTIFIED', 'Bachelor in Hotel Management (Tribhuvan University)'],
         image: 'https://i.pravatar.cc/150?u=bishal' },
       {
         name: 'Alisha Adhikari ', slug: 'alisha-adhikari', role: 'Career Strategist', credentials: ['British Council Certified', 'Bachelor in Business Administration & Master in Sociology (Tribhuvan University)',
           'Miss Nepal 2018 Finalist', 'Former Cabin Crew (Airhostess) at Shree Airlines'],
         image: 'https://i.pravatar.cc/150?u=anju'
       },
-        { name: 'Sanju Panthi', slug: 'sanju-panthi', role: 'Senior Consultant', credentials: ['British Council Certified', 'Master in Business Administration Tribhuvan University'],
+        { name: 'Sanju Panthi', slug: 'sanju-panthi', role: 'Senior Counselor', credentials: ['British Council Certified', 'Master in Business Administration Tribhuvan University'],
         image: 'https://i.pravatar.cc/150?u=bishal' },
     ],
   },

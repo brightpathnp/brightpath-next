@@ -31,6 +31,10 @@ export interface FAQ {
   answer: string;
 }
 
+export interface ContactProps {
+  defaultDestination?: string;
+}
+
 export interface DestinationDetail {
   overview: string;
   whyStudy: string[];

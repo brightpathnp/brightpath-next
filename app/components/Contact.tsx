@@ -4,16 +4,16 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { MapPin, Phone, Mail, Send, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
 import { DESTINATIONS } from '@/lib/constants';
-import type { Destination } from '@/types';
+import type { Destination, ContactProps } from '@/types';
 
 const socials = [
-  { label: 'Facebook',  href: 'https://www.facebook.com/brightpatheducation', slug: 'facebook'  },
-  { label: 'Instagram', href: 'https://www.instagram.com/brightpathnepal/',   slug: 'instagram' },
-  { label: 'YouTube',   href: 'https://www.youtube.com/@BrightPathNepal',     slug: 'youtube'   },
-  { label: 'TikTok',    href: 'https://www.tiktok.com/@brightpathnepal',      slug: 'tiktok'    },
+  { label: 'Facebook', href: 'https://www.facebook.com/brightpatheducation', slug: 'facebook' },
+  { label: 'Instagram', href: 'https://www.instagram.com/brightpathnepal/', slug: 'instagram' },
+  { label: 'YouTube', href: 'https://www.youtube.com/@BrightPathNepal', slug: 'youtube' },
+  { label: 'TikTok', href: 'https://www.tiktok.com/@brightpathnepal', slug: 'tiktok' },
 ] as const;
 
-export default function Contact(): JSX.Element {
+export default function Contact({ defaultDestination }: ContactProps): JSX.Element {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
@@ -49,7 +49,7 @@ export default function Contact(): JSX.Element {
               <div>
                 <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-200 mb-2">Location</h4>
                 <p className="text-sm font-bold text-white leading-relaxed">
-                  5th Floor, SIMCO Tower,<br />
+                  SIMCO Tower, 5th Floor,<br />
                   Adwait Marga, Bagbazar,<br />
                   Kathmandu, Nepal
                 </p>
@@ -129,25 +129,25 @@ export default function Contact(): JSX.Element {
       <div className="lg:col-span-2 p-12 md:p-16 lg:p-20 bg-gradient-to-br from-white to-slate-50">
         <h2 className="text-3xl font-black text-slate-900 mb-2 tracking-tight">Contact Us</h2>
         <p className="text-slate-500 mb-10 font-medium">
-          Complete the form below and a senior counselor will reach out within 24 hours.
+          Complete the form below and a  counselor will reach out within 24 hours.
         </p>
 
         {status === 'success' && (
           <div className="mb-8 p-5 bg-green-50 border border-green-200 rounded-2xl flex items-center gap-4 text-green-700">
-            <CheckCircle className="w-6 h-6 shrink-0" />
+            <CheckCircle className="w-6 h-6 shrink-0" aria-hidden="true" />
             <div>
               <p className="font-black text-sm uppercase tracking-wider">Message Received!</p>
-              <p className="text-xs font-bold text-green-600/80">We&apos;ll be in touch within 24 hours.</p>
+              <p className="text-xs font-bold text-green-600/80">Check your email for confirmation.</p>
             </div>
           </div>
         )}
 
         {status === 'error' && (
           <div className="mb-8 p-5 bg-red-50 border border-red-200 rounded-2xl flex items-center gap-4 text-red-700">
-            <AlertCircle className="w-6 h-6 shrink-0" />
+            <AlertCircle className="w-6 h-6 shrink-0" aria-hidden="true" />
             <div>
               <p className="font-black text-sm uppercase tracking-wider">Submission Error</p>
-              <p className="text-xs font-bold text-red-600/80">Please try again later.</p>
+              <p className="text-xs font-bold text-red-600/80">Please check your network or try again later.</p>
             </div>
           </div>
         )}
@@ -178,7 +178,12 @@ export default function Contact(): JSX.Element {
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-2">
               <label htmlFor="destination" className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">Interested Destination</label>
-              <select id="destination" name="destination" className="w-full px-6 py-4 rounded-2xl bg-white border border-slate-200 focus:border-brand-blue outline-none transition-all font-bold text-slate-700 appearance-none">
+              <select
+                id="destination"
+                name="destination"
+                defaultValue={defaultDestination ?? ''}
+                className="w-full px-6 py-4 rounded-2xl bg-white border border-slate-200 focus:border-brand-blue outline-none transition-all font-bold text-slate-700 appearance-none"
+              >
                 <option value="">Select Country</option>
                 {DESTINATIONS.map((d: Destination) => (
                   <option key={d.id} value={d.country}>{d.country}</option>
@@ -209,8 +214,8 @@ export default function Contact(): JSX.Element {
             className="w-full py-5 bg-gradient-to-r from-brand-blue via-brand-blue to-brand-purple text-white font-black rounded-2xl hover:brightness-110 transition-all shadow-xl shadow-blue-600/20 flex items-center justify-center gap-3 disabled:opacity-70 group"
           >
             {isSubmitting
-              ? <Loader2 className="w-5 h-5 animate-spin" />
-              : <Send className="w-5 h-5 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
+              ? <Loader2 className="w-5 h-5 animate-spin" aria-hidden="true" />
+              : <Send className="w-5 h-5 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
             }
             <span className="uppercase tracking-[0.2em] text-xs">Send Your Message</span>
           </button>
@@ -219,3 +224,6 @@ export default function Contact(): JSX.Element {
     </div>
   );
 }
+
+
+
