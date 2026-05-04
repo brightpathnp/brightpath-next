@@ -246,7 +246,7 @@ export default function AboutPage(): JSX.Element {
                 experts and global academic partnerships.
               </p>
             </div>
-            <div className="bg-brand-blue p-10 rounded-[2.5rem] text-white shadow-xl hover:bg-brand-dark transition-colors duration-500">
+            <div className="bg-gradient-to-r from-brand-dark via-brand-blue to-brand-purple p-10 rounded-[2.5rem] text-white shadow-xl transition-colors duration-500">
               <div className="w-14 h-14 bg-white/20 backdrop-blur-sm text-white rounded-2xl flex items-center justify-center mb-6">
                 <Users className="w-7 h-7" aria-hidden="true" />
               </div>
