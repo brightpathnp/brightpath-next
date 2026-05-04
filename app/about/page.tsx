@@ -121,8 +121,8 @@ export default function AboutPage(): JSX.Element {
 
               <div className="flex items-center gap-8 py-5 border-y border-slate-100">
                 {[
-                  { value: '5,000+', label: 'Students Guided' },
-                  { value: '98%',    label: 'Visa Success'     },
+                  { value: '500+', label: 'Students Guided' },
+                  { value: '86%',    label: 'Visa Success'     },
                   { value: '15+',    label: 'Global Destinations' },
                 ].map((stat, i, arr) => (
                   <div key={stat.label} className="flex items-center gap-8">
@@ -213,7 +213,7 @@ export default function AboutPage(): JSX.Element {
 
               {/* Credentials Sidebar */}
               <div className="lg:col-span-2 self-start">
-                <div className="p-8 bg-slate-900 rounded-[2.5rem] text-white">
+                <div className="p-8 bg-gradient-to-r from-brand-dark via-brand-blue to-brand-purple rounded-[2.5rem] text-white">
                   <h4 className="text-xl font-black mb-6 border-b border-white/10 pb-4">Our Credentials</h4>
                   <ul className="space-y-5">
                     {credentials.map((cred) => (

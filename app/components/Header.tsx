@@ -3,13 +3,8 @@ import type React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, ChevronDown } from 'lucide-react';
-
-interface NavItem {
-  label: string;
-  href: string;
-  children?: { label: string; href: string }[];
-}
+import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
+import { NavItem } from '@/types';
 
 const navItems: NavItem[] = [
   { label: 'Home', href: '/' },
@@ -17,7 +12,7 @@ const navItems: NavItem[] = [
     label: 'Services',
     href: '/services',
     children: [
-        { label: 'All Services', href: '/services' },
+      { label: 'All Services', href: '/services' },
       { label: 'Education Counseling', href: '/services/education-counseling' },
       { label: 'Scholarship Guidance', href: '/services/scholarship-guidance' },
       { label: 'Test Preparation', href: '/services/test-preparation' },
@@ -33,6 +28,15 @@ const navItems: NavItem[] = [
       { label: 'All Destinations', href: '/destinations' },
       { label: 'Australia', href: '/destinations/au' },
       { label: 'Canada', href: '/destinations/ca' },
+      {
+        label: 'Europe',
+        href: '/destinations/europe',
+        children: [
+          { label: 'Cyprus', href: '/destinations/cy' },
+          { label: 'Georgia', href: '/destinations/ge' },
+          { label: 'Malta', href: '/destinations/mt' },
+        ],
+      },
       { label: 'United Kingdom', href: '/destinations/uk' },
       { label: 'United States', href: '/destinations/us' },
       { label: 'Japan', href: '/destinations/jp' },
@@ -46,13 +50,15 @@ const navItems: NavItem[] = [
 export default function Header(): React.JSX.Element {
   const [mobileOpen, setMobileOpen] = useState<boolean>(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [openSubDropdown, setOpenSubDropdown] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState<boolean>(false);
   const pathname = usePathname();
-  const headerRef = useRef<HTMLElement>(null); // ← FIX 1: ref now covers entire header
+  const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     setMobileOpen(false);
     setOpenDropdown(null);
+    setOpenSubDropdown(null);
   }, [pathname]);
 
   useEffect(() => {
@@ -63,9 +69,9 @@ export default function Header(): React.JSX.Element {
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent): void {
-      // ← FIX 1: check against the whole header, so mobile nav taps are included
       if (headerRef.current && !headerRef.current.contains(e.target as Node)) {
         setOpenDropdown(null);
+        setOpenSubDropdown(null);
       }
     }
     document.addEventListener('mousedown', handleClickOutside);
@@ -79,6 +85,11 @@ export default function Header(): React.JSX.Element {
 
   function toggleDropdown(label: string): void {
     setOpenDropdown((prev) => (prev === label ? null : label));
+    setOpenSubDropdown(null);
+  }
+
+  function toggleSubDropdown(label: string): void {
+    setOpenSubDropdown((prev) => (prev === label ? null : label));
   }
 
   function isActive(href: string): boolean {
@@ -88,10 +99,9 @@ export default function Header(): React.JSX.Element {
 
   return (
     <header
-      ref={headerRef} // ← FIX 1: attach ref here
-      className={`fixed top-0 sm:top-8 inset-x-0 z-40 bg-white transition-all duration-300 ${
-        scrolled ? 'shadow-sm border-b border-gray-100' : ''
-      }`}
+      ref={headerRef}
+      className={`fixed top-0 sm:top-8 inset-x-0 z-40 bg-white transition-all duration-300 ${scrolled ? 'shadow-sm border-b border-gray-100' : ''
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -110,34 +120,66 @@ export default function Header(): React.JSX.Element {
                       onClick={() => toggleDropdown(item.label)}
                       aria-expanded={openDropdown === item.label}
                       aria-haspopup="true"
-                      className={`flex items-center gap-1 px-3 py-2 rounded-md text-xs font-black cursor-pointer transition-colors ${
-                        isActive(item.href) ? 'text-blue-500' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'
-                      }`}
+                      className={`flex items-center gap-1 px-3 py-2 rounded-md text-xs font-black cursor-pointer transition-colors ${isActive(item.href) ? 'text-blue-500' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'
+                        }`}
                     >
                       {item.label}
                       <ChevronDown
                         size={12}
-                        className={`transition-transform duration-200 ${
-                          openDropdown === item.label ? 'rotate-180' : ''
-                        }`}
+                        className={`transition-transform duration-200 ${openDropdown === item.label ? 'rotate-180' : ''
+                          }`}
                       />
                     </button>
 
                     {openDropdown === item.label && (
                       <div className="absolute top-full left-0 mt-1 w-52 bg-white rounded-xl shadow-lg border border-gray-100 py-1.5 z-50">
-                        {item.children.map((child) => (
-                          <Link
-                            key={child.href}
-                            href={child.href}
-                            className={`block px-4 py-2 text-xs font-black transition-colors ${
-                              pathname === child.href
-                                ? 'text-blue-500 bg-blue-50'
-                                : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
-                            }`}
-                          >
-                            {child.label}
-                          </Link>
-                        ))}
+                        {item.children.map((child) =>
+                          child.children ? (
+                            <div
+                              key={child.label}
+                              className="relative"
+                              onMouseEnter={() => setOpenSubDropdown(child.label)}
+                              onMouseLeave={() => setOpenSubDropdown(null)}
+                            >
+                              <button
+                                className={`w-full flex items-center justify-between px-4 py-2 text-xs font-black transition-colors ${isActive(child.href)
+                                    ? 'text-blue-500 bg-blue-50'
+                                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                                  }`}
+                              >
+                                {child.label}
+                                <ChevronRight size={12} />
+                              </button>
+                              {openSubDropdown === child.label && (
+                                <div className="absolute top-0 left-full ml-1 w-44 bg-white rounded-xl shadow-lg border border-gray-100 py-1.5 z-50">
+                                  {child.children.map((sub) => (
+                                    <Link
+                                      key={sub.href}
+                                      href={sub.href}
+                                      className={`block px-4 py-2 text-xs font-black transition-colors ${pathname === sub.href
+                                          ? 'text-blue-500 bg-blue-50'
+                                          : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                                        }`}
+                                    >
+                                      {sub.label}
+                                    </Link>
+                                  ))}
+                                </div>
+                              )}
+                            </div>
+                          ) : (
+                            <Link
+                              key={child.href}
+                              href={child.href}
+                              className={`block px-4 py-2 text-xs font-black transition-colors ${pathname === child.href
+                                  ? 'text-blue-500 bg-blue-50'
+                                  : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                                }`}
+                            >
+                              {child.label}
+                            </Link>
+                          )
+                        )}
                       </div>
                     )}
                   </div>
@@ -145,11 +187,10 @@ export default function Header(): React.JSX.Element {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`px-3 py-2 rounded-md text-xs font-black transition-colors ${
-                      isActive(item.href)
+                    className={`px-3 py-2 rounded-md text-xs font-black transition-colors ${isActive(item.href)
                         ? 'text-blue-500'
                         : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'
-                    }`}
+                      }`}
                   >
                     {item.label}
                   </Link>
@@ -191,36 +232,68 @@ export default function Header(): React.JSX.Element {
                   <button
                     onClick={() => toggleDropdown(item.label)}
                     aria-expanded={openDropdown === item.label}
-                    className={`w-full flex items-center justify-between px-3 py-3 rounded-lg text-sm font-black cursor-pointer transition-colors ${
-                      // ↑ FIX 2: added text-sm font-black — was missing, causing font mismatch
-                      isActive(item.href)
+                    className={`w-full flex items-center justify-between px-3 py-3 rounded-lg text-sm font-black cursor-pointer transition-colors ${isActive(item.href)
                         ? 'text-blue-500 bg-blue-50'
                         : 'text-gray-700 hover:bg-gray-50'
-                    }`}
+                      }`}
                   >
                     {item.label}
                     <ChevronDown
                       size={14}
-                      className={`transition-transform duration-200 ${
-                        openDropdown === item.label ? 'rotate-180' : ''
-                      }`}
+                      className={`transition-transform duration-200 ${openDropdown === item.label ? 'rotate-180' : ''
+                        }`}
                     />
                   </button>
                   {openDropdown === item.label && (
                     <div className="ml-4 mt-1 flex flex-col gap-0.5">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          href={child.href}
-                          className={`block px-3 py-2.5 rounded-lg text-xs font-black transition-colors ${
-                            pathname === child.href
-                              ? 'text-blue-500 bg-blue-50'
-                              : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
-                          }`}
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
+                      {item.children.map((child) =>
+                        child.children ? (
+                          <div key={child.label}>
+                            <button
+                              onClick={() => toggleSubDropdown(child.label)}
+                              aria-expanded={openSubDropdown === child.label}
+                              className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-black cursor-pointer transition-colors ${isActive(child.href)
+                                  ? 'text-blue-500 bg-blue-50'
+                                  : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                                }`}
+                            >
+                              {child.label}
+                              <ChevronDown
+                                size={12}
+                                className={`transition-transform duration-200 ${openSubDropdown === child.label ? 'rotate-180' : ''
+                                  }`}
+                              />
+                            </button>
+                            {openSubDropdown === child.label && (
+                              <div className="ml-4 mt-1 flex flex-col gap-0.5">
+                                {child.children.map((sub) => (
+                                  <Link
+                                    key={sub.href}
+                                    href={sub.href}
+                                    className={`block px-3 py-2 rounded-lg text-xs font-black transition-colors ${pathname === sub.href
+                                        ? 'text-blue-500 bg-blue-50'
+                                        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                                      }`}
+                                  >
+                                    {sub.label}
+                                  </Link>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        ) : (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            className={`block px-3 py-2.5 rounded-lg text-xs font-black transition-colors ${pathname === child.href
+                                ? 'text-blue-500 bg-blue-50'
+                                : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                              }`}
+                          >
+                            {child.label}
+                          </Link>
+                        )
+                      )}
                     </div>
                   )}
                 </div>
@@ -228,12 +301,10 @@ export default function Header(): React.JSX.Element {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`block px-3 py-3 rounded-lg text-sm font-black transition-colors ${
-                    // ↑ also aligned regular mobile links to text-sm to match toggle buttons
-                    isActive(item.href)
+                  className={`block px-3 py-3 rounded-lg text-sm font-black transition-colors ${isActive(item.href)
                       ? 'text-blue-500 bg-blue-50'
                       : 'text-gray-700 hover:bg-gray-50'
-                  }`}
+                    }`}
                 >
                   {item.label}
                 </Link>
