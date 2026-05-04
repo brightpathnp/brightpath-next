@@ -189,14 +189,28 @@ export default function ServiceDetailClient({ service }: ServiceDetailClientProp
                   <p className="text-brand-blue text-[10px] font-black uppercase tracking-widest mb-6">
                     {member.role}
                   </p>
-                  <div className="flex flex-wrap justify-center gap-2">
+                  <div className="flex flex-col gap-2 mt-1">
                     {member.credentials.map((c, idx) => (
-                      <span
-                        key={idx}
-                        className="px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-[9px] font-black uppercase tracking-wider text-slate-400"
-                      >
-                        {c}
-                      </span>
+                      <div key={idx} className="flex items-center gap-2">
+                        <svg
+                          className="w-3.5 h-3.5 text-brand-blue flex-shrink-0"
+                          viewBox="0 0 12 12"
+                          fill="none"
+                          aria-hidden="true"
+                        >
+                          <circle cx="6" cy="6" r="5.5" stroke="currentColor" strokeWidth="1" />
+                          <path
+                            d="M3.5 6l1.8 1.8 3.2-3.6"
+                            stroke="currentColor"
+                            strokeWidth="1.2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                        <span className="text-xs text-left font-semibold text-slate-600">
+                          {c}
+                        </span>
+                      </div>
                     ))}
                   </div>
                   <div className="mt-6 flex items-center justify-center gap-1.5 text-[10px] font-black text-brand-blue uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">

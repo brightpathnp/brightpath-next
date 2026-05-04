@@ -27,9 +27,9 @@ export const SERVICES: Service[] = [
     ],
     credentials: ['Ministry of Social Development (MoSD) Approved', 'CTEVT TITI Trained Counselors', 'British Council Certified Experts'],
    team: [
-      { name: 'Shreya Poudyal', slug: 'shreya-poudyal', role: 'Chief Counselor', credentials: ['CTEVT TITI CERTIFIED', 'MSc. Microbiology St. Xavier College (Tribhuvan University)'],
+      { name: 'Shreya Poudyal', slug: 'shreya-poudyal', role: 'Chief Counselor', credentials: ['CTEVT TITI Certified', 'MSc. Microbiology St. Xavier College (Tribhuvan University)'],
         image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200' },
-      { name: 'Yusha Hada', slug: 'yusha-hada', role: 'Senior Counselor', credentials: ['TEVT TITI CERTIFIED', 'Bachelor in Hotel Management (Tribhuvan University)'],
+      { name: 'Yusha Hada', slug: 'yusha-hada', role: 'Senior Counselor', credentials: ['TEVT TITI Certified', 'Bachelor in Hotel Management (Tribhuvan University)'],
         image: 'https://i.pravatar.cc/150?u=bishal' },
       {
         name: 'Alisha Adhikari ', slug: 'alisha-adhikari', role: 'Center Manager', credentials: ['British Council Certified', 'Bachelor in Business Administration & Master in Sociology (Tribhuvan University)',
@@ -56,9 +56,9 @@ export const SERVICES: Service[] = [
     ],
     credentials: ['Authorized University Representatives', 'MoSD Approved Documentation Process'],
   team: [
-      { name: 'Shreya Poudyal', slug: 'shreya-poudyal', role: 'Chief Counselor', credentials: ['CTEVT TITI CERTIFIED', 'MSc. Microbiology St. Xavier College (Tribhuvan University)'],
+      { name: 'Shreya Poudyal', slug: 'shreya-poudyal', role: 'Chief Counselor', credentials: ['CTEVT TITI Certified', 'MSc. Microbiology St. Xavier College (Tribhuvan University)'],
         image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200' },
-      { name: 'Yusha Hada', slug: 'yusha-hada', role: 'Senior Counselor', credentials: ['TEVT TITI CERTIFIED', 'Bachelor in Hotel Management (Tribhuvan University)'],
+      { name: 'Yusha Hada', slug: 'yusha-hada', role: 'Senior Counselor', credentials: ['TEVT TITI Certified', 'Bachelor in Hotel Management (Tribhuvan University)'],
         image: 'https://i.pravatar.cc/150?u=bishal' },
       {
         name: 'Alisha Adhikari ', slug: 'alisha-adhikari', role: 'Career Strategist', credentials: ['British Council Certified', 'Bachelor in Business Administration & Master in Sociology (Tribhuvan University)',
@@ -85,9 +85,9 @@ export const SERVICES: Service[] = [
     ],
     credentials: ['British Council Certified Instructors', 'Official PTE Lab Facilities', 'Japanese/Korean Native Trained Staff'],
     team: [
-      { name: 'Shreya Poudyal', slug: 'shreya-poudyal', role: 'Chief Counselor', credentials: ['CTEVT TITI CERTIFIED', 'MSc. Microbiology St. Xavier College (Tribhuvan University)'],
+      { name: 'Shreya Poudyal', slug: 'shreya-poudyal', role: 'Chief Counselor', credentials: ['CTEVT TITI Certified', 'MSc. Microbiology St. Xavier College (Tribhuvan University)'],
         image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200' },
-      { name: 'Yusha Hada', slug: 'yusha-hada', role: 'Senior Counselor', credentials: ['TEVT TITI CERTIFIED', 'Bachelor in Hotel Management (Tribhuvan University)'],
+      { name: 'Yusha Hada', slug: 'yusha-hada', role: 'Senior Counselor', credentials: ['TEVT TITI Certified', 'Bachelor in Hotel Management (Tribhuvan University)'],
         image: 'https://i.pravatar.cc/150?u=bishal' },
       {
         name: 'Alisha Adhikari ', slug: 'alisha-adhikari', role: 'Career Strategist', credentials: ['British Council Certified', 'Bachelor in Business Administration & Master in Sociology (Tribhuvan University)',
@@ -114,9 +114,9 @@ export const SERVICES: Service[] = [
     ],
     credentials: ['Ministry of Social Development', 'Certified Documentation Experts'],
      team: [
-      { name: 'Shreya Poudyal', slug: 'shreya-poudyal', role: 'Chief Counselor', credentials: ['CTEVT TITI CERTIFIED', 'MSc. Microbiology St. Xavier College (Tribhuvan University)'],
+      { name: 'Shreya Poudyal', slug: 'shreya-poudyal', role: 'Chief Counselor', credentials: ['CTEVT TITI Certified', 'MSc. Microbiology St. Xavier College (Tribhuvan University)'],
         image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200' },
-      { name: 'Yusha Hada', slug: 'yusha-hada', role: 'Senior Counselor', credentials: ['TEVT TITI CERTIFIED', 'Bachelor in Hotel Management (Tribhuvan University)'],
+      { name: 'Yusha Hada', slug: 'yusha-hada', role: 'Senior Counselor', credentials: ['TEVT TITI Certified', 'Bachelor in Hotel Management (Tribhuvan University)'],
         image: 'https://i.pravatar.cc/150?u=bishal' },
       {
         name: 'Alisha Adhikari ', slug: 'alisha-adhikari', role: 'Career Strategist', credentials: ['British Council Certified', 'Bachelor in Business Administration & Master in Sociology (Tribhuvan University)',
@@ -158,19 +158,6 @@ export const SERVICES: Service[] = [
       { title: 'Policy Issue', desc: 'Instant certificate generation for visa application.' },
     ],
     credentials: ['Authorized Insurance Agent Partnerships'],
-    team: [
-      { name: 'Shreya Poudyal', slug: 'shreya-poudyal', role: 'Chief Counselor', credentials: ['CTEVT TITI CERTIFIED', 'MSc. Microbiology St. Xavier College (Tribhuvan University)'],
-        image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200' },
-      { name: 'Yusha Hada', slug: 'yusha-hada', role: 'Senior Counselor', credentials: ['TEVT TITI CERTIFIED', 'Bachelor in Hotel Management (Tribhuvan University)'],
-        image: 'https://i.pravatar.cc/150?u=bishal' },
-      {
-        name: 'Alisha Adhikari ', slug: 'alisha-adhikari', role: 'Career Strategist', credentials: ['British Council Certified', 'Bachelor in Business Administration & Master in Sociology (Tribhuvan University)',
-          'Miss Nepal 2018 Finalist', 'Former Cabin Crew (Airhostess) at Shree Airlines'],
-        image: 'https://i.pravatar.cc/150?u=anju'
-      },
-        { name: 'Sanju Panthi', slug: 'sanju-panthi', role: 'Senior Counselor', credentials: ['British Council Certified', 'Master in Business Administration Tribhuvan University'],
-        image: 'https://i.pravatar.cc/150?u=bishal' },
-    ],
   },
 ];
 
