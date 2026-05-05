@@ -203,14 +203,14 @@ export default function Header(): React.JSX.Element {
             </nav>
           </div>
 
-          {/* <div className="hidden lg:flex items-center"> */}
+          <div className="hidden lg:flex items-center">
             <button
               onClick={() => setModalOpen(true)}
               className="ml-4 px-6 py-3 bg-brand-blue text-white rounded-full font-black text-[10px] uppercase tracking-widest shadow-xl shadow-blue-600/10 hover:bg-brand-dark hover:-translate-y-0.5 active:translate-y-0 transition-all"
             >
               Free Consultation
             </button>
-          {/* </div> */}
+          </div>
 
           <button
             onClick={() => setMobileOpen((prev) => !prev)}
