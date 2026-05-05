@@ -675,7 +675,7 @@ export const DESTINATIONS: Destination[] = [
     id: 'mt',
     country: 'Malta',
     count: 5,
-    image: 'https://images.unsplash.com/photo-1597500330999-7227d6200236?q=80&w=800&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1522307617379-e982f8754d27?q=80&w=871&auto=format&fit=crop',
     highlight: 'English speaking Mediterranean gem.',
     features: ['Schengen Member State', 'Low Tuition Fees', 'English Speaking', 'Work Permit Possibilities', 'Simple Visa Process'],
     details: {
