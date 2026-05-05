@@ -160,9 +160,6 @@ export default function TermsOfUsePage(): React.JSX.Element {
                                 <Link href="/refund-policy" className="text-brand-blue hover:underline">
                                     Refund Policy
                                 </Link>
-                                <Link href="/gdpr" className="text-brand-blue hover:underline">
-                                    GDPR Compliance
-                                </Link>
                             </div>
                         </div>
                         <Link

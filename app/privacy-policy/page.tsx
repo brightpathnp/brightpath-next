@@ -144,14 +144,11 @@ export default function PrivacyPolicyPage(): React.JSX.Element {
                                 Related Policies
                             </p>
                             <div className="flex flex-wrap gap-4 text-sm font-medium">
-                                <Link href="/terms" className="text-brand-blue hover:underline">
+                                <Link href="/terms-of-use" className="text-brand-blue hover:underline">
                                     Terms of Use
                                 </Link>
                                 <Link href="/refund-policy" className="text-brand-blue hover:underline">
                                     Refund Policy
-                                </Link>
-                                <Link href="/gdpr" className="text-brand-blue hover:underline">
-                                    GDPR Compliance
                                 </Link>
                             </div>
                         </div>

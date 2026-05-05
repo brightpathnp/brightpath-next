@@ -29,7 +29,7 @@ export default function TopBar(): React.JSX.Element {
                     +977 9845411411
                 </a>
             </div>
-            <div className="flex items-center gap-3 p-12 mr-4">
+            <div className="flex items-center gap-5 mr-14">
                 <a href="https://facebook.com/brightpathnepal" target="_blank" rel="noopener noreferrer">
                     <Image
                         src="https://cdn.simpleicons.org/facebook/ffffff"
