@@ -213,7 +213,7 @@ export default function AboutPage(): JSX.Element {
 
               {/* Credentials Sidebar */}
               <div className="lg:col-span-2 self-start">
-                <div className="p-8 bg-gradient-to-r from-brand-dark via-brand-blue to-brand-purple rounded-[2.5rem] text-white">
+                <div className="p-8 bg-gradient-to-r from-[#214aaf] to-blue-500 rounded-[2.5rem] text-white">
                   <h4 className="text-xl font-black mb-6 border-b border-white/10 pb-4">Our Credentials</h4>
                   <ul className="space-y-5">
                     {credentials.map((cred) => (
@@ -246,7 +246,7 @@ export default function AboutPage(): JSX.Element {
                 experts and global academic partnerships.
               </p>
             </div>
-            <div className="bg-gradient-to-r from-brand-dark via-brand-blue to-brand-purple p-10 rounded-[2.5rem] text-white shadow-xl transition-colors duration-500">
+            <div className="bg-gradient-to-r from-[#214aaf] to-blue-500 p-10 rounded-[2.5rem] text-white shadow-xl transition-colors duration-500">
               <div className="w-14 h-14 bg-white/20 backdrop-blur-sm text-white rounded-2xl flex items-center justify-center mb-6">
                 <Users className="w-7 h-7" aria-hidden="true" />
               </div>

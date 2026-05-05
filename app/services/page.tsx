@@ -22,8 +22,7 @@ export default function ServicesPage(): React.JSX.Element {
     <div className="page-transition min-h-screen">
       {/* Hero */}
       <section
-        className="py-16 md:py-20 relative overflow-hidden"
-        style={{ background: 'linear-gradient(to right, #214aaf, #3B82F6)' }}
+        className="py-16 md:py-20 relative overflow-hidden bg-gradient-to-r from-[#214aaf] to-blue-500"
       >
         <div className="max-w-7xl mx-auto px-4 text-center relative z-10">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-white text-[9px] font-black uppercase tracking-[0.2em] mb-6">

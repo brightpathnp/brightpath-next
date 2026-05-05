@@ -133,7 +133,7 @@ export default function ServiceDetailClient({ service }: ServiceDetailClientProp
 
               <div
                 style={{ background: 'linear-gradient(to right, #214aaf, #3B82F6)' }}
-                className="bg-white p-10 rounded-[3rem] text-white shadow-xl relative overflow-hidden">
+                className="bg-white p-10 rounded-[3rem] text-white shadow-xl relative overflow-hidden bg-gradient-to-r from-brand-mid to-blue-500">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
                 <h3 className="text-2xl font-black mb-4 relative z-10">Ready to Start?</h3>
                 <p className="text-blue-100 text-sm font-medium mb-8 relative z-10">

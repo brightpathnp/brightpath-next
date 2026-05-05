@@ -15,6 +15,8 @@
   --color-brand-dark:   #1e3a8a;
   --color-brand-purple: #9333ea;
 
+  --color-brand-royal: #214aaf
+
   /* ── Font ── */
   --font-sans: 'Open Sans', sans-serif;
   --font-mono: var(--font-geist-mono);

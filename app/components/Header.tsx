@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
 import { NavItem } from '@/types';
+import Image from 'next/image';
 
 const navItems: NavItem[] = [
   { label: 'Home', href: '/' },
@@ -107,7 +108,7 @@ export default function Header(): React.JSX.Element {
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="shrink-0">
             <span className="text-xl font-bold text-black tracking-tight">
-              BrightPath.
+              <Image width={125} height={125} src='/bp-logo.png' alt='bightpath-logo'/>
             </span>
           </Link>
 

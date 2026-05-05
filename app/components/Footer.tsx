@@ -36,13 +36,11 @@ export default function Footer(): React.JSX.Element {
 
           {/* Brand Column */}
           <div className="col-span-1 md:col-span-2 lg:col-span-2">
-            <Link href="/" className="inline-flex items-center gap-3 mb-8 group">
-              <div className="w-12 h-12 bg-brand-blue rounded-xl flex items-center justify-center p-2 shadow-lg group-hover:rotate-6 transition-transform overflow-hidden">
+            <Link href="/" className="inline-flex items-center gap-3 mb-8 group">  
                <div className="text-white font-black">BP</div>
                 {/* TODO: Replace with actual logo-icon-white.png in /public */}
-              </div>
               <span className="text-2xl font-black text-slate-900 tracking-tighter">
-                BrightPath.
+                <Image width={125} height={125} src='/bp-logo.png' alt='bightpath-logo'/>
               </span>
             </Link>
 
