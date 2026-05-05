@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
 import { NavItem } from '@/types';
 import Image from 'next/image';
+import ConsultationModal from './ConsultationModal';
 
 const navItems: NavItem[] = [
   { label: 'Home', href: '/' },
@@ -53,6 +54,7 @@ export default function Header(): React.JSX.Element {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [openSubDropdown, setOpenSubDropdown] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState<boolean>(false);
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
   const pathname = usePathname();
   const headerRef = useRef<HTMLElement>(null);
 
@@ -99,6 +101,7 @@ export default function Header(): React.JSX.Element {
   }
 
   return (
+    <>
     <header
       ref={headerRef}
       className={`fixed top-0 sm:top-8 inset-x-0 z-40 bg-white transition-all duration-300 ${scrolled ? 'shadow-sm border-b border-gray-100' : ''
@@ -108,7 +111,7 @@ export default function Header(): React.JSX.Element {
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="shrink-0">
             <span className="text-xl font-bold text-black tracking-tight">
-              <Image width={125} height={125} src='/bp-logo.png' alt='bightpath-logo'/>
+              <Image width={125} height={125} src='/bp-logo.png' alt='bightpath-logo' />
             </span>
           </Link>
 
@@ -144,8 +147,8 @@ export default function Header(): React.JSX.Element {
                             >
                               <button
                                 className={`w-full flex items-center justify-between px-4 py-2 text-xs font-black transition-colors ${isActive(child.href)
-                                    ? 'text-blue-500 bg-blue-50'
-                                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                                  ? 'text-blue-500 bg-blue-50'
+                                  : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                                   }`}
                               >
                                 {child.label}
@@ -158,8 +161,8 @@ export default function Header(): React.JSX.Element {
                                       key={sub.href}
                                       href={sub.href}
                                       className={`block px-4 py-2 text-xs font-black transition-colors ${pathname === sub.href
-                                          ? 'text-blue-500 bg-blue-50'
-                                          : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                                        ? 'text-blue-500 bg-blue-50'
+                                        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                                         }`}
                                     >
                                       {sub.label}
@@ -173,8 +176,8 @@ export default function Header(): React.JSX.Element {
                               key={child.href}
                               href={child.href}
                               className={`block px-4 py-2 text-xs font-black transition-colors ${pathname === child.href
-                                  ? 'text-blue-500 bg-blue-50'
-                                  : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                                ? 'text-blue-500 bg-blue-50'
+                                : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                                 }`}
                             >
                               {child.label}
@@ -189,8 +192,8 @@ export default function Header(): React.JSX.Element {
                     key={item.href}
                     href={item.href}
                     className={`px-3 py-2 rounded-md text-xs font-black transition-colors ${isActive(item.href)
-                        ? 'text-blue-500'
-                        : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'
+                      ? 'text-blue-500'
+                      : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'
                       }`}
                   >
                     {item.label}
@@ -200,14 +203,14 @@ export default function Header(): React.JSX.Element {
             </nav>
           </div>
 
-          <div className="hidden lg:flex items-center">
-            <Link
-              href="/contact"
-              className="bg-brand-blue text-white text-xs font-black px-4 py-2 rounded-lg transition-colors hover:opacity-90 cursor-pointer"
+          {/* <div className="hidden lg:flex items-center"> */}
+            <button
+              onClick={() => setModalOpen(true)}
+              className="ml-4 px-6 py-3 bg-brand-blue text-white rounded-full font-black text-[10px] uppercase tracking-widest shadow-xl shadow-blue-600/10 hover:bg-brand-dark hover:-translate-y-0.5 active:translate-y-0 transition-all"
             >
               Free Consultation
-            </Link>
-          </div>
+            </button>
+          {/* </div> */}
 
           <button
             onClick={() => setMobileOpen((prev) => !prev)}
@@ -234,8 +237,8 @@ export default function Header(): React.JSX.Element {
                     onClick={() => toggleDropdown(item.label)}
                     aria-expanded={openDropdown === item.label}
                     className={`w-full flex items-center justify-between px-3 py-3 rounded-lg text-sm font-black cursor-pointer transition-colors ${isActive(item.href)
-                        ? 'text-blue-500 bg-blue-50'
-                        : 'text-gray-700 hover:bg-gray-50'
+                      ? 'text-blue-500 bg-blue-50'
+                      : 'text-gray-700 hover:bg-gray-50'
                       }`}
                   >
                     {item.label}
@@ -254,8 +257,8 @@ export default function Header(): React.JSX.Element {
                               onClick={() => toggleSubDropdown(child.label)}
                               aria-expanded={openSubDropdown === child.label}
                               className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-black cursor-pointer transition-colors ${isActive(child.href)
-                                  ? 'text-blue-500 bg-blue-50'
-                                  : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                                ? 'text-blue-500 bg-blue-50'
+                                : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                                 }`}
                             >
                               {child.label}
@@ -272,8 +275,8 @@ export default function Header(): React.JSX.Element {
                                     key={sub.href}
                                     href={sub.href}
                                     className={`block px-3 py-2 rounded-lg text-xs font-black transition-colors ${pathname === sub.href
-                                        ? 'text-blue-500 bg-blue-50'
-                                        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                                      ? 'text-blue-500 bg-blue-50'
+                                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                                       }`}
                                   >
                                     {sub.label}
@@ -287,8 +290,8 @@ export default function Header(): React.JSX.Element {
                             key={child.href}
                             href={child.href}
                             className={`block px-3 py-2.5 rounded-lg text-xs font-black transition-colors ${pathname === child.href
-                                ? 'text-blue-500 bg-blue-50'
-                                : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                              ? 'text-blue-500 bg-blue-50'
+                              : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                               }`}
                           >
                             {child.label}
@@ -303,8 +306,8 @@ export default function Header(): React.JSX.Element {
                   key={item.href}
                   href={item.href}
                   className={`block px-3 py-3 rounded-lg text-sm font-black transition-colors ${isActive(item.href)
-                      ? 'text-blue-500 bg-blue-50'
-                      : 'text-gray-700 hover:bg-gray-50'
+                    ? 'text-blue-500 bg-blue-50'
+                    : 'text-gray-700 hover:bg-gray-50'
                     }`}
                 >
                   {item.label}
@@ -324,5 +327,7 @@ export default function Header(): React.JSX.Element {
         </div>
       )}
     </header>
+      <ConsultationModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
+    </>
   );
 }
