@@ -19,7 +19,7 @@ const classes = [
 
 const legal = [
   { label: 'Privacy Policy',  href: '/privacy-policy' },
-  { label: 'Terms of Use',    href: '/terms'           },
+  { label: 'Terms of Use',    href: '/terms-of-use'           },
   { label: 'Refund Policy',   href: '/refund-policy'   },
   { label: 'GDPR Compliance', href: '/gdpr'            },
 ];
