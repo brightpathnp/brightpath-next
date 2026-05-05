@@ -5,6 +5,7 @@ import SuccessStories from './components/SuccessStories';
 import LanguagePrep from './components/LanguagePrep';
 import WhyChooseUs from './components/WhyChooseUs';
 import Contact from './components/Contact';
+import AICounselor from './components/AICounselor';
 
 export default function Home(): JSX.Element {
   return (
@@ -15,6 +16,7 @@ export default function Home(): JSX.Element {
       <SuccessStories />
       <LanguagePrep />
       <WhyChooseUs />
+      <AICounselor/>
       <section id="contact" className="py-24 bg-white font-sans">
         <div className="max-w-7xl mx-auto px-4">
           <div className="rounded-[2.5rem] overflow-hidden shadow-2xl border border-slate-100">
