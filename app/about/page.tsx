@@ -72,7 +72,7 @@ const edgeItems = [
     bg: 'bg-purple-50',
     color: 'text-brand-purple',
     hoverBg: 'group-hover:bg-brand-purple',
-    title: '500+ Partner Institutions',
+    title: '15+ Partner Institutions',
     desc: 'Direct authorized representation of world-class universities globally.',
   },
   {

@@ -687,9 +687,9 @@ export const DESTINATIONS: Destination[] = [
         'Simple and Transparent Student Visa Process',
         'High Safety and Quality of Life',
       ],
-      intakes: ['October (Main Intake)', 'February (Secondary Intake)'],
+      intakes: ['July (Main Intake)', 'September (Secondary Intake)'],
       costs: {
-        tuition: 'EUR 4,000 - 12,000 per year (Bachelor/Master)',
+        tuition: 'EUR 5,500 - 12,000 per year (Bachelor/Master)',
         living: 'EUR 700 - 1,000 per month',
       },
       requirements: [

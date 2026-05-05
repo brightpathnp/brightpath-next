@@ -133,7 +133,7 @@ export default function Footer(): React.JSX.Element {
 
         {/* Bottom Bar */}
         <div className="border-t border-slate-200 pt-10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-bold uppercase tracking-widest text-slate-400">
-          <p>&copy; {currentYear} BrightPath Nepal Education. All rights reserved.</p>
+          <p>&copy; {currentYear} BrightPath Pvt Ltd. | All rights reserved.</p>
           <p className="flex items-center gap-2">
             Designed for Global Excellence <ChevronRight className="w-3 h-3" />
           </p>
