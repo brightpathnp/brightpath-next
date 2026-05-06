@@ -6,7 +6,7 @@ import Link from 'next/link';
 import {
   Calendar, User, Search, ArrowRight,
   ChevronLeft, ChevronRight, Hash, Clock,
-  ChevronDown, ChevronUp, Loader2, Tag as TagIcon,
+  ChevronDown, ChevronUp, Loader2, Tag as TagIcon, X
 } from 'lucide-react';
 import { BLOG_POSTS as STATIC_POSTS } from '@/lib/constants';
 import {
@@ -27,6 +27,7 @@ export default function BlogClient(): JSX.Element {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [activeCategoryId, setActiveCategoryId] = useState<number | null>(null);
+  const [activeTagId, setActiveTagId] = useState<number | null>(null);
   const [blogSearch, setBlogSearch] = useState<string>('');
   const [isRecentExpanded, setIsRecentExpanded] = useState<boolean>(false);
   const [totalPosts, setTotalPosts] = useState<number>(0);
@@ -50,9 +51,10 @@ export default function BlogClient(): JSX.Element {
         currentPage,
         POSTS_PER_PAGE,
         activeCategoryId ?? undefined,
+        activeTagId ?? undefined
       );
 
-      if (currentPage === 1 && !activeCategoryId) {
+      if (currentPage === 1 && !activeCategoryId && !activeTagId) {
         const { posts: latest } = await fetchWordPressPosts(1, 15);
         setRecentPosts(latest.length > 0 ? latest : STATIC_POSTS.slice(0, 15));
       }
@@ -67,7 +69,7 @@ export default function BlogClient(): JSX.Element {
       setIsLoading(false);
     };
     void loadPosts();
-  }, [currentPage, activeCategoryId]);
+  }, [currentPage, activeCategoryId, activeTagId]);
 
   const filteredPosts = posts.filter((p) =>
     p.title.toLowerCase().includes(blogSearch.toLowerCase()),
@@ -79,6 +81,20 @@ export default function BlogClient(): JSX.Element {
     setCurrentPage(p);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  const handleCategoryClick = (id: number | null): void => {
+    setActiveCategoryId(id);
+    setActiveTagId(null);
+    setCurrentPage(1);
+  };
+
+  const handleTagClick = (id: number): void => {
+    setActiveTagId((prev) => (prev === id ? null : id));
+    setActiveCategoryId(null);
+    setCurrentPage(1);
+  };
+
+  const activeTagName = liveTags.find((t) => t.id === activeTagId)?.name;
 
   return (
     <div className="page-transition min-h-screen bg-slate-50 font-sans">
@@ -112,21 +128,39 @@ export default function BlogClient(): JSX.Element {
               {/* Category Filter Bar */}
               <div className="bg-white rounded-2xl p-3 mb-8 shadow-sm border border-slate-200 flex items-center gap-2 overflow-x-auto">
                 <button
-                  onClick={() => { setActiveCategoryId(null); setCurrentPage(1); }}
-                  className={`px-5 py-2 rounded-xl text-[11px] font-black transition-all whitespace-nowrap uppercase tracking-wider ${activeCategoryId === null ? 'bg-brand-blue text-white shadow-md' : 'bg-slate-50 text-slate-500 hover:bg-slate-100'}`}
+                  onClick={() => handleCategoryClick(null)}
+                  className={`px-5 py-2 rounded-xl text-[11px] font-black transition-all whitespace-nowrap uppercase tracking-wider ${activeCategoryId === null && activeTagId === null ? 'bg-brand-blue text-white shadow-md' : 'bg-slate-50 text-slate-500 hover:bg-slate-100'}`}
                 >
                   All
                 </button>
                 {liveCategories.map((cat: WPCategory) => (
                   <button
                     key={cat.id}
-                    onClick={() => { setActiveCategoryId(cat.id); setCurrentPage(1); }}
+                    onClick={() => { handleCategoryClick(cat.id) }}
                     className={`px-5 py-2 rounded-xl text-[11px] font-black transition-all whitespace-nowrap uppercase tracking-wider ${activeCategoryId === cat.id ? 'bg-brand-blue text-white shadow-md' : 'bg-slate-50 text-slate-500 hover:bg-slate-100'}`}
                   >
                     {cat.name} ({cat.count})
                   </button>
                 ))}
               </div>
+
+              {activeTagId !== null && (
+                <div className="mb-6 flex items-center gap-2">
+                  <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                    Filtering by tag:
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-brand-blue text-white rounded-full text-[10px] font-black uppercase tracking-wider">
+                    #{activeTagName}
+                    <button
+                      onClick={() => { setActiveTagId(null); setCurrentPage(1); }}
+                      aria-label="Clear tag filter"
+                      className="ml-0.5 hover:opacity-70 transition-opacity"
+                    >
+                      <X className="w-3 h-3" />
+                    </button>
+                  </span>
+                </div>
+              )}
 
               {/* Posts or Loader */}
               {isLoading ? (
@@ -188,7 +222,7 @@ export default function BlogClient(): JSX.Element {
                         No articles found in this section.
                       </p>
                       <button
-                        onClick={() => { setBlogSearch(''); setActiveCategoryId(null); }}
+                        onClick={() => { setBlogSearch(''); setActiveCategoryId(null); setActiveTagId(null); }}
                         className="mt-4 text-brand-blue font-bold underline"
                       >
                         Clear Filters
@@ -252,7 +286,11 @@ export default function BlogClient(): JSX.Element {
                     {liveTags.map((tag: WPTag) => (
                       <button
                         key={tag.id}
-                        className="px-3 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-wider bg-slate-50 text-slate-400 hover:text-brand-blue border border-slate-100 transition-all hover:bg-blue-50"
+                        onClick={() => handleTagClick(tag.id)}
+                        className={`px-3 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-wider border transition-all ${activeTagId === tag.id
+                            ? 'bg-brand-blue text-white border-brand-blue shadow-md'
+                            : 'bg-slate-50 text-slate-400 border-slate-100 hover:text-brand-blue hover:bg-blue-50'
+                          }`}
                       >
                         #{tag.name}
                       </button>

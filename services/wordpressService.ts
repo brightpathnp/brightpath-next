@@ -13,6 +13,7 @@ export interface WPTag {
   id: number;
   name: string;
   slug: string;
+  count: number;
 }
 
 interface WPEmbeddedMedia {
@@ -84,14 +85,17 @@ export const fetchWordPressTags = async (): Promise<WPTag[]> => {
 export const fetchWordPressPosts = async (
   page = 1,
   perPage = 10,
-  categoryId?: number
+  categoryId?: number,
+  tagId?: number
 ): Promise<{ posts: BlogPost[]; total: number }> => {
   try {
     let url = `${WP_URL}/posts?page=${page}&per_page=${perPage}&_embed`;
     if (categoryId) {
       url += `&categories=${categoryId}`;
     }
-
+      if (tagId) {                        // add this block
+      url += `&tags=${tagId}`;
+    }
     const response = await fetch(url, {
       next: { revalidate: 300 },
     });
