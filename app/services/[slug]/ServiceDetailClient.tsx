@@ -60,17 +60,17 @@ export default function ServiceDetailClient({ service }: ServiceDetailClientProp
             </div>
             {service.points && (
               <div className="hidden lg:flex justify-end">
-                <div className="bg-white/5 backdrop-blur-xl p-6 rounded-[2.5rem] border border-white/10 max-w-sm">
-                  <h2 className="text-blue-300 font-black uppercase tracking-[0.2em] text-[9px] mb-4">
+                <div className="bg-white/5 backdrop-blur-xl p-8 rounded-[2.5rem] border border-white/10 max-w-lg">
+                  <h2 className="text-blue-300 font-black uppercase tracking-[0.2em] text-sm mb-5">
                     Service Highlights
                   </h2>
-                  <ul className="space-y-3">
+                  <ul className="space-y-4">
                     {service.points.map((p, i) => (
                       <li key={i} className="flex items-center gap-4">
-                        <div className="w-5 h-5 bg-green-500/20 border border-green-500/30 rounded-lg flex items-center justify-center shrink-0">
-                          <CheckCircle2 className="w-3 h-3 text-green-400" aria-hidden="true" />
+                        <div className="w-9 h-9 bg-green-500/20 border border-green-500/30 rounded-lg flex items-center justify-center shrink-0">
+                          <CheckCircle2 className="w-5 h-5 text-green-400" aria-hidden="true" />
                         </div>
-                        <span className="text-blue-50 font-bold text-xs">{p}</span>
+                        <span className="text-blue-50 font-bold text-base">{p}</span>
                       </li>
                     ))}
                   </ul>
