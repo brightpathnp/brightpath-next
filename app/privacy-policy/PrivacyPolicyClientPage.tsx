@@ -130,8 +130,8 @@ export default function PrivacyPolicyClientPage(): JSX.Element {
                           className="font-medium text-brand-blue underline underline-offset-4 transition-colors hover:text-brand-dark"
                         >
                           contact us
-                        </button>{' '}
-                        using the contact details provided below. We may ask you to verify your
+                        </button>
+                        . We may ask you to verify your
                         identity before responding.
                       </p>
                     </>

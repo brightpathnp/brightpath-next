@@ -9,13 +9,15 @@ const socialLinks = [
   { label: 'TikTok',    href: 'https://www.tiktok.com/@brightpathnepal',      slug: 'tiktok'    },
 ] as const;
 
-const classes = [
-  'IELTS Academic',
-  'PTE Academic',
-  'Japanese N5-N4',
-  'Korean TOPIK',
-  'German A1-B2',
+const services = [
+  { label: 'Educational Counseling',  href: 'education-counseling' },
+  { label: 'Scholarship Guidance',    href: 'scholarship-guidance' },
+  { label: 'Test Preparation',   href: 'test-preparation' },
+  {label: 'Student Accomodation', href:'student-accomodation'},
+  {label: 'Visa Documentation', href:'visa-documentation'},
+  {label: 'Health Insurance', href:'health-insurance'}
 ];
+
 
 const legal = [
   { label: 'Privacy Policy',  href: '/privacy-policy' },
@@ -98,13 +100,13 @@ export default function Footer(): React.JSX.Element {
           {/* Classes Column */}
           <div>
             <h4 className="text-slate-900 font-bold mb-8 text-sm uppercase tracking-[0.2em]">
-              Classes
+              Services
             </h4>
             <ul className="space-y-4 text-sm font-medium">
-              {classes.map((cls) => (
-                <li key={cls}>
-                  <Link href="/services" className="hover:text-brand-blue transition-colors">
-                    {cls}
+              {services.map((cls) => (
+                <li key={cls.href}>
+                  <Link href={`/services/${cls.href}`} className="hover:text-brand-blue transition-colors">
+                    {cls.label}
                   </Link>
                 </li>
               ))}

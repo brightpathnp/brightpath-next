@@ -138,7 +138,7 @@ export default function TermsOfUseClientPage(): JSX.Element {
                       >
                         contact us
                       </button>{' '}
-                       or visit our office in Kathmandu, Nepal.
+                       or visit our office in Bagbazar, Kathmandu, Nepal.
                     </p>
                   ) : (
                     section.content.map((paragraph) => (
