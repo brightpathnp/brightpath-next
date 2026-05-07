@@ -13,51 +13,88 @@ const socials = [
   { label: 'TikTok', href: 'https://www.tiktok.com/@brightpathnepal', slug: 'tiktok' },
 ] as const;
 
+interface FormState {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  destination: string;
+  qualification: string;
+  message: string;
+  consent: boolean;
+}
+
+const INITIAL_FORM: FormState = {
+  firstName: '',
+  lastName: '',
+  email: '',
+  phone: '',
+  destination: '',
+  qualification: '',
+  message: '',
+  consent: false
+};
+
 export default function Contact({ defaultDestination }: ContactProps): JSX.Element {
+  const [form, setForm] = useState<FormState>({
+    ...INITIAL_FORM,
+    destination: defaultDestination ?? '',
+  });
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
-  e.preventDefault();
-  setIsSubmitting(true);
-  setStatus('idle');
-
-  const form = e.target as HTMLFormElement;
-  const data = new FormData(form);
-
-  const payload = {
-    firstName: data.get('firstName') as string,
-    lastName: data.get('lastName') as string,
-    email: data.get('email') as string,
-    phone: data.get('phone') as string,
-    destination: data.get('destination') as string,
-    qualification: data.get('qualification') as string,
-    message: data.get('message') as string,
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ): void => {
+    const { name, value, type } = e.target;
+       const nextValue = type === 'checkbox' ? (e.target as HTMLInputElement).checked : value;
+    setForm((prev) => ({
+      ...prev,
+      [name]: nextValue,
+    }));
   };
 
-  try {
-    const res = await fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setStatus('idle');
 
-    if (!res.ok) throw new Error('Server error');
+    const payload = {
+      firstName: form.firstName,
+      lastName: form.lastName,
+      email: form.email,
+      phone: form.phone,
+      destination: form.destination,
+      qualification: form.qualification,
+      message: form.message,
+      consent: form.consent
+    };
 
-    setStatus('success');
-    form.reset();
-    setTimeout(() => setStatus('idle'), 6000);
-  } catch {
-    setStatus('error');
-    setTimeout(() => setStatus('idle'), 6000);
-  } finally {
-    setIsSubmitting(false);
-  }
-};
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) throw new Error('Server error');
+
+      setStatus('success');
+      setForm({
+        ...INITIAL_FORM,
+        destination: defaultDestination ?? '',
+      });
+      setTimeout(() => setStatus('idle'), 6000);
+    } catch {
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 6000);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="grid lg:grid-cols-3 overflow-hidden bg-white">
-      {/* Left Panel */}
       <div className="lg:col-span-1 bg-gradient-to-br from-brand-dark via-brand-blue to-blue-500 p-12 md:p-14 text-white relative">
         <div className="absolute top-0 right-0 w-80 h-80 bg-white rounded-full translate-x-1/3 -translate-y-1/3 opacity-5 blur-[100px]" aria-hidden="true" />
         <div className="absolute bottom-0 left-0 w-40 h-40 bg-blue-400 rounded-full -translate-x-1/2 translate-y-1/2 opacity-10 blur-[80px]" aria-hidden="true" />
@@ -76,8 +113,10 @@ export default function Contact({ defaultDestination }: ContactProps): JSX.Eleme
               <div>
                 <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-200 mb-2">Location</h4>
                 <p className="text-sm font-bold text-white leading-relaxed">
-                  5th Floor, SIMCO Tower,<br />
-                  Adwait Marga, Bagbazar,<br />
+                  5th Floor, SIMCO Tower,
+                  <br />
+                  Adwait Marga, Bagbazar,
+                  <br />
                   Kathmandu, Nepal
                 </p>
               </div>
@@ -97,15 +136,24 @@ export default function Contact({ defaultDestination }: ContactProps): JSX.Eleme
                   <div className="grid grid-cols-1 gap-y-3 pt-4 border-t border-white/10">
                     <div>
                       <p className="text-[8px] font-black uppercase text-blue-200/40 mb-1">Dubai/UAE</p>
-                      <a href="tel:9704532363" className="text-xs font-bold hover:text-blue-300 transition-colors">9704532363</a>
+                      <a href="tel:9704532363" className="text-xs font-bold hover:text-blue-300 transition-colors">
+                        9704532363
+                      </a>
                     </div>
                     <div>
                       <p className="text-[8px] font-black uppercase text-blue-200/40 mb-1">United Kingdom</p>
-                      <a href="tel:9704532353" className="text-xs font-bold hover:text-blue-300 transition-colors">9704532353</a>
+                      <a href="tel:9704532353" className="text-xs font-bold hover:text-blue-300 transition-colors">
+                        9704532353
+                      </a>
                     </div>
                     <div>
                       <p className="text-[8px] font-black uppercase text-blue-200/40 mb-1">WhatsApp Hub</p>
-                      <a href="https://wa.me/9779845411411" target="_blank" rel="noopener noreferrer" className="text-xs font-bold hover:text-blue-300 transition-colors">
+                      <a
+                        href="https://wa.me/9779845411411"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs font-bold hover:text-blue-300 transition-colors"
+                      >
                         +977 9845411411
                       </a>
                     </div>
@@ -152,11 +200,10 @@ export default function Contact({ defaultDestination }: ContactProps): JSX.Eleme
         </div>
       </div>
 
-      {/* Right Panel — Form */}
       <div className="lg:col-span-2 p-12 md:p-16 lg:p-20 bg-gradient-to-br from-white to-slate-50">
         <h2 className="text-3xl font-black text-slate-900 mb-2 tracking-tight">Contact Us</h2>
         <p className="text-slate-500 mb-10 font-medium">
-          Complete the form below and a  counselor will reach out within 24 hours.
+          Complete the form below and a counselor will reach out within 24 hours.
         </p>
 
         {status === 'success' && (
@@ -182,44 +229,97 @@ export default function Contact({ defaultDestination }: ContactProps): JSX.Eleme
         <form onSubmit={handleSubmit} className="space-y-6" noValidate>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <label htmlFor="firstName" className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">First Name *</label>
-              <input id="firstName" type="text" name="firstName" required className="w-full px-6 py-4 rounded-2xl bg-white border border-slate-200 focus:border-brand-blue focus:ring-4 focus:ring-brand-blue/5 outline-none transition-all font-medium" />
+              <label htmlFor="firstName" className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">
+                First Name *
+              </label>
+              <input
+                id="firstName"
+                type="text"
+                name="firstName"
+                required
+                value={form.firstName}
+                onChange={handleChange}
+                className="w-full px-6 py-4 rounded-2xl bg-white border border-slate-200 focus:border-brand-blue focus:ring-4 focus:ring-brand-blue/5 outline-none transition-all font-medium"
+              />
             </div>
             <div className="space-y-2">
-              <label htmlFor="lastName" className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">Last Name *</label>
-              <input id="lastName" type="text" name="lastName" required className="w-full px-6 py-4 rounded-2xl bg-white border border-slate-200 focus:border-brand-blue focus:ring-4 focus:ring-brand-blue/5 outline-none transition-all font-medium" />
+              <label htmlFor="lastName" className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">
+                Last Name *
+              </label>
+              <input
+                id="lastName"
+                type="text"
+                name="lastName"
+                required
+                value={form.lastName}
+                onChange={handleChange}
+                className="w-full px-6 py-4 rounded-2xl bg-white border border-slate-200 focus:border-brand-blue focus:ring-4 focus:ring-brand-blue/5 outline-none transition-all font-medium"
+              />
             </div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <label htmlFor="email" className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">Email Address *</label>
-              <input id="email" type="email" name="email" required className="w-full px-6 py-4 rounded-2xl bg-white border border-slate-200 focus:border-brand-blue focus:ring-4 focus:ring-brand-blue/5 outline-none transition-all font-medium" />
+              <label htmlFor="email" className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">
+                Email Address *
+              </label>
+              <input
+                id="email"
+                type="email"
+                name="email"
+                required
+                value={form.email}
+                onChange={handleChange}
+                className="w-full px-6 py-4 rounded-2xl bg-white border border-slate-200 focus:border-brand-blue focus:ring-4 focus:ring-brand-blue/5 outline-none transition-all font-medium"
+              />
             </div>
             <div className="space-y-2">
-              <label htmlFor="phone" className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">Phone Number *</label>
-              <input id="phone" type="tel" name="phone" required className="w-full px-6 py-4 rounded-2xl bg-white border border-slate-200 focus:border-brand-blue focus:ring-4 focus:ring-brand-blue/5 outline-none transition-all font-medium" />
+              <label htmlFor="phone" className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">
+                Phone Number *
+              </label>
+              <input
+                id="phone"
+                type="tel"
+                name="phone"
+                required
+                value={form.phone}
+                onChange={handleChange}
+                className="w-full px-6 py-4 rounded-2xl bg-white border border-slate-200 focus:border-brand-blue focus:ring-4 focus:ring-brand-blue/5 outline-none transition-all font-medium"
+              />
             </div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <label htmlFor="destination" className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">Interested Destination</label>
+              <label htmlFor="destination" className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">
+                Interested Destination
+              </label>
               <select
                 id="destination"
                 name="destination"
-                defaultValue={defaultDestination ?? ''}
+                value={form.destination}
+                onChange={handleChange}
                 className="w-full px-6 py-4 rounded-2xl bg-white border border-slate-200 focus:border-brand-blue outline-none transition-all font-bold text-slate-700 appearance-none"
               >
                 <option value="">Select Country</option>
                 {DESTINATIONS.map((d: Destination) => (
-                  <option key={d.id} value={d.country}>{d.country}</option>
+                  <option key={d.id} value={d.country}>
+                    {d.country}
+                  </option>
                 ))}
               </select>
             </div>
             <div className="space-y-2">
-              <label htmlFor="qualification" className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">Highest Qualification</label>
-              <select id="qualification" name="qualification" className="w-full px-6 py-4 rounded-2xl bg-white border border-slate-200 focus:border-brand-blue outline-none transition-all font-bold text-slate-700 appearance-none">
+              <label htmlFor="qualification" className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">
+                Highest Qualification
+              </label>
+              <select
+                id="qualification"
+                name="qualification"
+                value={form.qualification}
+                onChange={handleChange}
+                className="w-full px-6 py-4 rounded-2xl bg-white border border-slate-200 focus:border-brand-blue outline-none transition-all font-bold text-slate-700 appearance-none"
+              >
                 <option value="">Select Level</option>
                 <option value="Class 10">Class 10</option>
                 <option value="Diploma">Diploma</option>
@@ -231,19 +331,45 @@ export default function Contact({ defaultDestination }: ContactProps): JSX.Eleme
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="message" className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">Message / Questions</label>
-            <textarea id="message" name="message" rows={4} placeholder="Tell us about your goals..." className="w-full px-6 py-5 rounded-2xl bg-white border border-slate-200 focus:border-brand-blue outline-none transition-all font-medium resize-none" />
+            <label htmlFor="message" className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">
+              Message / Questions
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows={4}
+              placeholder="Tell us about your goals..."
+              value={form.message}
+              onChange={handleChange}
+              className="w-full px-6 py-5 rounded-2xl bg-white border border-slate-200 focus:border-brand-blue outline-none transition-all font-medium resize-none"
+            />
           </div>
+
+                      <label className="flex items-start gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3">
+              <input
+                type="checkbox"
+                name="consent"
+                required
+                aria-required="true"
+                checked={form.consent}
+                onChange={handleChange}
+                className="mt-0.5 h-4 w-4 rounded border-slate-300 text-brand-blue focus:ring-brand-blue"
+              />
+              <span className="text-xs leading-5 text-slate-600">
+                By submitting this form, I consent to receiving marketing communications from Brightpath at any time.
+              </span>
+            </label>
 
           <button
             type="submit"
             disabled={isSubmitting}
             className="w-full py-5 bg-gradient-to-r from-brand-blue via-brand-blue to-brand-purple text-white font-black rounded-2xl hover:brightness-110 transition-all shadow-xl shadow-blue-600/20 flex items-center justify-center gap-3 disabled:opacity-70 group"
           >
-            {isSubmitting
-              ? <Loader2 className="w-5 h-5 animate-spin" aria-hidden="true" />
-              : <Send className="w-5 h-5 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
-            }
+            {isSubmitting ? (
+              <Loader2 className="w-5 h-5 animate-spin" aria-hidden="true" />
+            ) : (
+              <Send className="w-5 h-5 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+            )}
             <span className="uppercase tracking-[0.2em] text-xs">Send Your Message</span>
           </button>
         </form>
@@ -251,6 +377,3 @@ export default function Contact({ defaultDestination }: ContactProps): JSX.Eleme
     </div>
   );
 }
-
-
-
