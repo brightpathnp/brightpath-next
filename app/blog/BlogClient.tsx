@@ -112,7 +112,7 @@ export default function BlogClient(): JSX.Element {
             Expert Insights &amp; Global Updates
           </h1>
           <p className="text-blue-100 text-sm md:text-base font-medium max-w-2xl mx-auto opacity-90 leading-relaxed">
-            Live updates synced directly from our WordPress headquarters.
+            Live updates synced directly from our headquarters.
           </p>
         </div>
       </section>

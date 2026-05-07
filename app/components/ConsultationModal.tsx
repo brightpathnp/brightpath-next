@@ -34,12 +34,42 @@ export default function ConsultationModal({
 
   if (!isOpen) return null;
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setStatus('idle');
-    await new Promise((res) => setTimeout(res, 1200));
-    setIsSubmitting(false);
+ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+  e.preventDefault();
+  setIsSubmitting(true);
+  setStatus('idle');
+
+  const form = e.target as HTMLFormElement;
+  const data = new FormData(form);
+
+  const englishTest = data.get('modalEnglishTest') as string;
+
+  const payload = {
+    firstName: data.get('firstName') as string,
+    lastName: data.get('lastName') as string,
+    phone: data.get('phone') as string,
+    email: data.get('email') as string,
+    city: data.get('city') as string,
+    qualification: data.get('qualification') as string,
+    preferredDate: data.get('preferredDate') as string,
+    preferredTime: data.get('preferredTime') as string,
+    englishTest,
+    testType: englishTest === 'yes' ? (data.get('testType') as string) : '',
+    testScore: englishTest === 'yes' ? (data.get('testScore') as string) : '',
+    destination: data.get('destination') as string,
+    message: data.get('message') as string,
+    formType: title,
+  };
+
+  try {
+    const res = await fetch('/api/consultation', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+
+    if (!res.ok) throw new Error('Server error');
+
     setStatus('success');
     setTimeout(() => {
       onClose();
@@ -47,7 +77,12 @@ export default function ConsultationModal({
       setTestGiven('no');
       formRef.current?.reset();
     }, 3000);
-  };
+  } catch {
+    setStatus('error');
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   const inputCls =
     'w-full px-4 py-2.5 rounded-lg bg-slate-50 border border-slate-200 focus:border-brand-blue focus:ring-2 focus:ring-blue-600/10 outline-none text-sm transition-all';
@@ -89,13 +124,14 @@ export default function ConsultationModal({
         {/* Scrollable Form Body */}
         <div className="p-6 md:p-8 overflow-y-auto">
 
+
           {/* Success Banner */}
           {status === 'success' && (
             <div className="mb-4 p-4 bg-green-50 border border-green-200 rounded-xl flex items-center gap-3 text-green-700">
               <CheckCircle className="w-5 h-5 shrink-0" />
               <div>
-                <p className="font-bold text-sm">Message sent successfully!</p>
-                <p className="text-xs text-green-600">Our counselor will contact you shortly.</p>
+                <p className="font-black text-sm uppercase tracking-wider">Message sent successfully!</p>
+                <p className="text-xs font-bold text-green-600/80">Check your email for confirmation. Our counselor will contact you shortly.</p>
               </div>
             </div>
           )}

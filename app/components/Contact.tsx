@@ -18,15 +18,42 @@ export default function Contact({ defaultDestination }: ContactProps): JSX.Eleme
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setStatus('idle');
-    await new Promise((res) => setTimeout(res, 1200));
-    setIsSubmitting(false);
-    setStatus('success');
-    (e.target as HTMLFormElement).reset();
-    setTimeout(() => setStatus('idle'), 5000);
+  e.preventDefault();
+  setIsSubmitting(true);
+  setStatus('idle');
+
+  const form = e.target as HTMLFormElement;
+  const data = new FormData(form);
+
+  const payload = {
+    firstName: data.get('firstName') as string,
+    lastName: data.get('lastName') as string,
+    email: data.get('email') as string,
+    phone: data.get('phone') as string,
+    destination: data.get('destination') as string,
+    qualification: data.get('qualification') as string,
+    message: data.get('message') as string,
   };
+
+  try {
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+
+    if (!res.ok) throw new Error('Server error');
+
+    setStatus('success');
+    form.reset();
+    setTimeout(() => setStatus('idle'), 6000);
+  } catch {
+    setStatus('error');
+    setTimeout(() => setStatus('idle'), 6000);
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   return (
     <div className="grid lg:grid-cols-3 overflow-hidden bg-white">
