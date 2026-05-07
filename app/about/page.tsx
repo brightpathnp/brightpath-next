@@ -122,8 +122,8 @@ export default function AboutPage(): JSX.Element {
               <div className="flex items-center gap-8 py-5 border-y border-slate-100">
                 {[
                   { value: '500+', label: 'Students Guided' },
-                  { value: '86%',    label: 'Visa Success'     },
-                  { value: '15+',    label: 'Global Destinations' },
+                  { value: '86%', label: 'Visa Success' },
+                  { value: '15+', label: 'Global Destinations' },
                 ].map((stat, i, arr) => (
                   <div key={stat.label} className="flex items-center gap-8">
                     <div className="flex flex-col">
@@ -285,9 +285,9 @@ export default function AboutPage(): JSX.Element {
       </section>
 
       {/* ── Timeline ── */}
-      <section className="py-20 bg-white relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
+      <section className="py-24 bg-white relative overflow-hidden">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-24">
             <h2 className="text-3xl font-black text-slate-900 tracking-tight mb-4 flex items-center justify-center gap-4">
               <History className="w-7 h-7 text-brand-blue" aria-hidden="true" />
               Our Evolution
@@ -298,38 +298,93 @@ export default function AboutPage(): JSX.Element {
           </div>
 
           <div className="relative">
-            <div className="absolute left-1/2 -translate-x-1/2 h-full w-0.5 bg-slate-100 hidden md:block" aria-hidden="true" />
-            <div className="space-y-12 md:space-y-20">
-              {MILESTONES.map((milestone: Milestone, idx: number) => (
-                <div
-                  key={milestone.year}
-                  className={`relative flex flex-col md:flex-row items-center justify-between ${idx % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
-                >
-                  <div className="hidden md:block w-5/12" />
-                  <div className="absolute left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-white border-2 border-brand-blue z-10 items-center justify-center shadow-md hidden md:flex">
-                    <Star className="w-3 h-3 text-brand-blue fill-brand-blue" aria-hidden="true" />
-                  </div>
-                  <div className="w-full md:w-5/12 group">
-                    <div className="bg-slate-50 p-8 rounded-[2rem] border border-slate-100 group-hover:bg-white group-hover:shadow-xl group-hover:shadow-blue-900/5 transition-all">
-                      <div className="flex items-center gap-4 mb-3">
-                        <span className="text-2xl font-black text-brand-blue/30 group-hover:text-brand-blue transition-colors">
-                          {milestone.year}
-                        </span>
-                        <div className="h-px flex-1 bg-slate-200" />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-y-48 relative">
+              {MILESTONES.map((milestone, idx) => {
+                const cols = 3;
+                const totalItems = MILESTONES.length;
+                const rowIndex = Math.floor(idx / cols);
+                const isReversedRow = rowIndex % 2 !== 0;
+                const posInRow = idx % cols;
+                const isLastTotal = idx === totalItems - 1;
+                const itemsInThisRow = Math.min(cols, totalItems - rowIndex * cols);
+                const isLastInThisRow = posInRow === itemsInThisRow - 1;
+                const isLastInRow = posInRow === cols - 1;
+                const hasNextRow = idx + 1 < totalItems;
+                const isCardAbove = idx % 2 === 0;
+                const colStart = isReversedRow ? cols - posInRow : posInRow + 1;
+
+                return (
+                  <div
+                    key={idx}
+                    style={{ gridColumnStart: colStart,  bottom: isLastInRow ? '275px': '0'  }}
+                    className="relative flex flex-col items-center justify-center h-20"
+                  >
+                    {/* Horizontal line to next dot in same row */}
+                    {!isLastInThisRow && !isLastTotal && (
+                      <div
+                        className={`hidden md:block absolute top-1/2 -translate-y-1/2 h-[3px] bg-slate-100 z-0 w-full
+            ${isReversedRow ? 'right-1/2' : 'left-1/2'}`}
+                      />
+                    )}
+
+                    {/* Snake turn connector */}
+                    {isLastInRow && hasNextRow && (
+                      <div
+                        className={`hidden md:block absolute border-slate-100 z-0 pointer-events-none
+            ${!isReversedRow
+                            ? 'border-r-[3px] border-b-[3px] rounded-br-[30px] left-1/2'
+                            : 'border-l-[3px] border-b-[3px] rounded-bl-[30px] right-1/2'
+                          }`}
+                        style={{
+                          top: '50%',
+                          height: '272px',
+                          width: '48px',
+                        }}
+                      />
+                    )}
+
+                    {/* Card */}
+                    <div
+                      className={`absolute w-full max-w-[180px] transition-all duration-500 group z-10
+          ${isCardAbove ? 'bottom-[calc(50%+2.5rem)]' : 'top-[calc(50%+2.5rem)]'}`}
+                    >
+                      <div className="bg-white rounded-xl shadow-sm border border-slate-100 p-3 group-hover:shadow-xl group-hover:border-brand-blue/30 transition-all">
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="text-xs font-black text-brand-blue">{milestone.year}</span>
+                          <div className="h-px flex-1 bg-slate-50" />
+                          <Star className="w-2.5 h-2.5 text-brand-blue/20 fill-current" />
+                        </div>
+                        <h3 className="text-[10px] font-bold text-slate-900 mb-1 leading-tight uppercase tracking-tight">
+                          {milestone.title}
+                        </h3>
+                        <p className="text-slate-400 leading-relaxed text-[9px] line-clamp-2">
+                          {milestone.desc}
+                        </p>
                       </div>
-                      <h3 className="text-lg font-bold text-slate-900 mb-2 tracking-tight">{milestone.title}</h3>
-                      <p className="text-slate-500 font-medium leading-relaxed text-xs">{milestone.desc}</p>
                     </div>
+
+                    {/* Blue dot */}
+                    <div className="relative z-20 flex items-center justify-center">
+                      <div className="bg-brand-blue shadow-lg w-7 h-7 rounded-full flex items-center justify-center text-white text-[9px] font-black border-4 border-white">
+                        {String(idx + 1).padStart(2, '0')}
+                      </div>
+                      <div className="absolute inset-0 rounded-full bg-brand-blue/10 animate-ping" />
+                    </div>
+
+                    {/* Mobile vertical line */}
+                    {!isLastTotal && (
+                      <div className="md:hidden absolute top-1/2 left-1/2 -translate-x-1/2 w-[3px] bg-slate-100 h-[calc(100%+8rem)] -z-10" />
+                    )}
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
       </section>
 
       {/* ── Director Note + BrightPath Edge ── */}
-      <section className="py-20 bg-slate-950 text-white relative overflow-hidden">
+      <section className="py-20 bg-slate-950 text-white relative ">
         <div
           className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-brand-blue/20 via-transparent to-transparent"
           aria-hidden="true"
