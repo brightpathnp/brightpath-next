@@ -36,7 +36,7 @@ const initialFormData: ConsultationFormData = {
   testScore: '',
   destination: '',
   message: '',
-  consent: false,
+  consent: true,
 };
 
 export default function ConsultationModal({

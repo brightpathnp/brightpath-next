@@ -32,7 +32,7 @@ const INITIAL_FORM: FormState = {
   destination: '',
   qualification: '',
   message: '',
-  consent: false
+  consent: true
 };
 
 export default function Contact({ defaultDestination }: ContactProps): JSX.Element {

@@ -16,6 +16,7 @@ export default function ContactPolicyModal({
 }: ContactPolicyModalProps): JSX.Element | null {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [consent, setConsent] = useState<boolean>(true);
   const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
@@ -38,6 +39,9 @@ export default function ContactPolicyModal({
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
+
+    if (!consent) return;
+
     setIsSubmitting(true);
     setStatus('idle');
 
@@ -45,6 +49,7 @@ export default function ContactPolicyModal({
       await new Promise((resolve) => setTimeout(resolve, 1200));
       setStatus('success');
       formRef.current?.reset();
+      setConsent(false);
 
       setTimeout(() => {
         setStatus('idle');
@@ -201,9 +206,25 @@ export default function ContactPolicyModal({
               />
             </div>
 
+            <label className="flex items-start gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3">
+              <input
+                type="checkbox"
+                name="consent"
+                required
+                aria-required="true"
+                checked={consent}
+                onChange={(e) => setConsent(e.target.checked)}
+                className="mt-0.5 h-4 w-4 rounded border-slate-300 text-brand-blue focus:ring-brand-blue"
+              />
+              <span className="text-xs leading-5 text-slate-600">
+                By submitting this form, I consent to receiving marketing communications from
+                Brightpath at any time.
+              </span>
+            </label>
+
             <button
               type="submit"
-              disabled={isSubmitting}
+              disabled={isSubmitting || !consent}
               className="mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-brand-blue to-brand-purple py-3 font-bold text-white shadow-lg transition-all hover:brightness-110 hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-70"
             >
               {isSubmitting ? (
