@@ -199,6 +199,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       success: true,
       adminEmailId: adminResult.data?.id,
       userEmailId: userResult.data?.id,
+      confirmationSent: true,
     });
   } catch (error) {
     console.error('[contact/route] unexpected error:', error);
