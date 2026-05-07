@@ -32,7 +32,7 @@ const INITIAL_FORM: FormState = {
   destination: '',
   qualification: '',
   message: '',
-  consent: true
+  consent: false,
 };
 
 export default function Contact({ defaultDestination }: ContactProps): JSX.Element {
@@ -43,11 +43,19 @@ export default function Contact({ defaultDestination }: ContactProps): JSX.Eleme
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
+  const isFormValid =
+    form.firstName.trim() !== '' &&
+    form.lastName.trim() !== '' &&
+    form.email.trim() !== '' &&
+    form.phone.trim() !== '' &&
+    form.consent;
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ): void => {
     const { name, value, type } = e.target;
-       const nextValue = type === 'checkbox' ? (e.target as HTMLInputElement).checked : value;
+    const nextValue = type === 'checkbox' ? (e.target as HTMLInputElement).checked : value;
+
     setForm((prev) => ({
       ...prev,
       [name]: nextValue,
@@ -56,6 +64,11 @@ export default function Contact({ defaultDestination }: ContactProps): JSX.Eleme
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
+
+    if (!isFormValid) {
+      return;
+    }
+
     setIsSubmitting(true);
     setStatus('idle');
 
@@ -67,7 +80,7 @@ export default function Contact({ defaultDestination }: ContactProps): JSX.Eleme
       destination: form.destination,
       qualification: form.qualification,
       message: form.message,
-      consent: form.consent
+      consent: form.consent,
     };
 
     try {
@@ -94,25 +107,33 @@ export default function Contact({ defaultDestination }: ContactProps): JSX.Eleme
   };
 
   return (
-    <div className="grid lg:grid-cols-3 overflow-hidden bg-white">
-      <div className="lg:col-span-1 bg-gradient-to-br from-brand-dark via-brand-blue to-blue-500 p-12 md:p-14 text-white relative">
-        <div className="absolute top-0 right-0 w-80 h-80 bg-white rounded-full translate-x-1/3 -translate-y-1/3 opacity-5 blur-[100px]" aria-hidden="true" />
-        <div className="absolute bottom-0 left-0 w-40 h-40 bg-blue-400 rounded-full -translate-x-1/2 translate-y-1/2 opacity-10 blur-[80px]" aria-hidden="true" />
+    <div className="grid overflow-hidden bg-white lg:grid-cols-3">
+      <div className="relative bg-gradient-to-br from-brand-dark via-brand-blue to-blue-500 p-12 text-white md:p-14 lg:col-span-1">
+        <div
+          className="absolute right-0 top-0 h-80 w-80 translate-x-1/3 -translate-y-1/3 rounded-full bg-white opacity-5 blur-[100px]"
+          aria-hidden="true"
+        />
+        <div
+          className="absolute bottom-0 left-0 h-40 w-40 -translate-x-1/2 translate-y-1/2 rounded-full bg-blue-400 opacity-10 blur-[80px]"
+          aria-hidden="true"
+        />
 
         <div className="relative z-10">
-          <h2 className="text-3xl font-black mb-4 tracking-tight">Direct Support</h2>
-          <p className="text-blue-100/70 font-medium mb-12 text-sm leading-relaxed">
+          <h2 className="mb-4 text-3xl font-black tracking-tight">Direct Support</h2>
+          <p className="mb-12 text-sm font-medium leading-relaxed text-blue-100/70">
             Connect with us via our global support channels.
           </p>
 
           <div className="space-y-10">
-            <div className="flex items-start gap-5 group">
-              <div className="w-11 h-11 bg-white/10 rounded-2xl flex items-center justify-center backdrop-blur-md border border-white/10 group-hover:bg-blue-600 transition-all shrink-0">
-                <MapPin className="w-5 h-5" aria-hidden="true" />
+            <div className="group flex items-start gap-5">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/10 backdrop-blur-md transition-all group-hover:bg-blue-600">
+                <MapPin className="h-5 w-5" aria-hidden="true" />
               </div>
               <div>
-                <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-200 mb-2">Location</h4>
-                <p className="text-sm font-bold text-white leading-relaxed">
+                <h4 className="mb-2 text-[10px] font-black uppercase tracking-[0.2em] text-blue-200">
+                  Location
+                </h4>
+                <p className="text-sm font-bold leading-relaxed text-white">
                   5th Floor, SIMCO Tower,
                   <br />
                   Adwait Marga, Bagbazar,
@@ -122,37 +143,53 @@ export default function Contact({ defaultDestination }: ContactProps): JSX.Eleme
               </div>
             </div>
 
-            <div className="flex items-start gap-5 group">
-              <div className="w-11 h-11 bg-white/10 rounded-2xl flex items-center justify-center backdrop-blur-md border border-white/10 group-hover:bg-blue-600 transition-all shrink-0">
-                <Phone className="w-5 h-5" aria-hidden="true" />
+            <div className="group flex items-start gap-5">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/10 backdrop-blur-md transition-all group-hover:bg-blue-600">
+                <Phone className="h-5 w-5" aria-hidden="true" />
               </div>
               <div className="flex-1">
-                <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-200 mb-2">Phone & Hotlines</h4>
+                <h4 className="mb-2 text-[10px] font-black uppercase tracking-[0.2em] text-blue-200">
+                  Phone & Hotlines
+                </h4>
                 <div className="space-y-4">
                   <p className="text-sm font-bold">
                     01-5313666{' '}
-                    <span className="text-[9px] text-blue-200/50 font-normal ml-1">(Reception)</span>
+                    <span className="ml-1 text-[9px] font-normal text-blue-200/50">
+                      (Reception)
+                    </span>
                   </p>
-                  <div className="grid grid-cols-1 gap-y-3 pt-4 border-t border-white/10">
+                  <div className="grid grid-cols-1 gap-y-3 border-t border-white/10 pt-4">
                     <div>
-                      <p className="text-[8px] font-black uppercase text-blue-200/40 mb-1">Dubai/UAE</p>
-                      <a href="tel:9704532363" className="text-xs font-bold hover:text-blue-300 transition-colors">
+                      <p className="mb-1 text-[8px] font-black uppercase text-blue-200/40">
+                        Dubai/UAE
+                      </p>
+                      <a
+                        href="tel:9704532363"
+                        className="text-xs font-bold transition-colors hover:text-blue-300"
+                      >
                         9704532363
                       </a>
                     </div>
                     <div>
-                      <p className="text-[8px] font-black uppercase text-blue-200/40 mb-1">United Kingdom</p>
-                      <a href="tel:9704532353" className="text-xs font-bold hover:text-blue-300 transition-colors">
+                      <p className="mb-1 text-[8px] font-black uppercase text-blue-200/40">
+                        United Kingdom
+                      </p>
+                      <a
+                        href="tel:9704532353"
+                        className="text-xs font-bold transition-colors hover:text-blue-300"
+                      >
                         9704532353
                       </a>
                     </div>
                     <div>
-                      <p className="text-[8px] font-black uppercase text-blue-200/40 mb-1">WhatsApp Hub</p>
+                      <p className="mb-1 text-[8px] font-black uppercase text-blue-200/40">
+                        WhatsApp Hub
+                      </p>
                       <a
                         href="https://wa.me/9779845411411"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-xs font-bold hover:text-blue-300 transition-colors"
+                        className="text-xs font-bold transition-colors hover:text-blue-300"
                       >
                         +977 9845411411
                       </a>
@@ -162,16 +199,24 @@ export default function Contact({ defaultDestination }: ContactProps): JSX.Eleme
               </div>
             </div>
 
-            <div className="flex items-start gap-5 group">
-              <div className="w-11 h-11 bg-white/10 rounded-2xl flex items-center justify-center backdrop-blur-md border border-white/10 group-hover:bg-blue-600 transition-all shrink-0">
-                <Mail className="w-5 h-5" aria-hidden="true" />
+            <div className="group flex items-start gap-5">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/10 backdrop-blur-md transition-all group-hover:bg-blue-600">
+                <Mail className="h-5 w-5" aria-hidden="true" />
               </div>
               <div>
-                <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-200 mb-2">Official Email</h4>
-                <a href="mailto:info@brightpathnepal.com" className="text-sm font-bold hover:text-blue-200 transition-colors lowercase block">
+                <h4 className="mb-2 text-[10px] font-black uppercase tracking-[0.2em] text-blue-200">
+                  Official Email
+                </h4>
+                <a
+                  href="mailto:info@brightpathnepal.com"
+                  className="block text-sm font-bold lowercase transition-colors hover:text-blue-200"
+                >
                   info@brightpathnepal.com
                 </a>
-                <a href="mailto:bec.edu.nep@gmail.com" className="text-xs font-medium text-blue-100/50 mt-1 lowercase block hover:text-blue-200 transition-colors">
+                <a
+                  href="mailto:bec.edu.nep@gmail.com"
+                  className="mt-1 block text-xs font-medium lowercase text-blue-100/50 transition-colors hover:text-blue-200"
+                >
                   bec.edu.nep@gmail.com
                 </a>
               </div>
@@ -186,7 +231,7 @@ export default function Contact({ defaultDestination }: ContactProps): JSX.Eleme
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.label}
-                className="w-9 h-9 bg-white/10 border border-white/10 rounded-xl flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 transition-all"
+                className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/10 transition-all hover:border-blue-600 hover:bg-blue-600"
               >
                 <Image
                   src={`https://cdn.simpleicons.org/${social.slug}/ffffff`}
@@ -200,36 +245,43 @@ export default function Contact({ defaultDestination }: ContactProps): JSX.Eleme
         </div>
       </div>
 
-      <div className="lg:col-span-2 p-12 md:p-16 lg:p-20 bg-gradient-to-br from-white to-slate-50">
-        <h2 className="text-3xl font-black text-slate-900 mb-2 tracking-tight">Contact Us</h2>
-        <p className="text-slate-500 mb-10 font-medium">
+      <div className="bg-gradient-to-br from-white to-slate-50 p-12 md:p-16 lg:col-span-2 lg:p-20">
+        <h2 className="mb-2 text-3xl font-black tracking-tight text-slate-900">Contact Us</h2>
+        <p className="mb-10 font-medium text-slate-500">
           Complete the form below and a counselor will reach out within 24 hours.
         </p>
 
         {status === 'success' && (
-          <div className="mb-8 p-5 bg-green-50 border border-green-200 rounded-2xl flex items-center gap-4 text-green-700">
-            <CheckCircle className="w-6 h-6 shrink-0" aria-hidden="true" />
+          <div className="mb-8 flex items-center gap-4 rounded-2xl border border-green-200 bg-green-50 p-5 text-green-700">
+            <CheckCircle className="h-6 w-6 shrink-0" aria-hidden="true" />
             <div>
-              <p className="font-black text-sm uppercase tracking-wider">Message Received!</p>
-              <p className="text-xs font-bold text-green-600/80">Check your email for confirmation.</p>
+              <p className="text-sm font-black uppercase tracking-wider">Message Received!</p>
+              <p className="text-xs font-bold text-green-600/80">
+                Check your email for confirmation.
+              </p>
             </div>
           </div>
         )}
 
         {status === 'error' && (
-          <div className="mb-8 p-5 bg-red-50 border border-red-200 rounded-2xl flex items-center gap-4 text-red-700">
-            <AlertCircle className="w-6 h-6 shrink-0" aria-hidden="true" />
+          <div className="mb-8 flex items-center gap-4 rounded-2xl border border-red-200 bg-red-50 p-5 text-red-700">
+            <AlertCircle className="h-6 w-6 shrink-0" aria-hidden="true" />
             <div>
-              <p className="font-black text-sm uppercase tracking-wider">Submission Error</p>
-              <p className="text-xs font-bold text-red-600/80">Please check your network or try again later.</p>
+              <p className="text-sm font-black uppercase tracking-wider">Submission Error</p>
+              <p className="text-xs font-bold text-red-600/80">
+                Please check your network or try again later.
+              </p>
             </div>
           </div>
         )}
 
         <form onSubmit={handleSubmit} className="space-y-6" noValidate>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid gap-6 md:grid-cols-2">
             <div className="space-y-2">
-              <label htmlFor="firstName" className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">
+              <label
+                htmlFor="firstName"
+                className="ml-1 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400"
+              >
                 First Name *
               </label>
               <input
@@ -239,11 +291,14 @@ export default function Contact({ defaultDestination }: ContactProps): JSX.Eleme
                 required
                 value={form.firstName}
                 onChange={handleChange}
-                className="w-full px-6 py-4 rounded-2xl bg-white border border-slate-200 focus:border-brand-blue focus:ring-4 focus:ring-brand-blue/5 outline-none transition-all font-medium"
+                className="w-full rounded-2xl border border-slate-200 bg-white px-6 py-4 font-medium outline-none transition-all focus:border-brand-blue focus:ring-4 focus:ring-brand-blue/5"
               />
             </div>
             <div className="space-y-2">
-              <label htmlFor="lastName" className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">
+              <label
+                htmlFor="lastName"
+                className="ml-1 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400"
+              >
                 Last Name *
               </label>
               <input
@@ -253,14 +308,17 @@ export default function Contact({ defaultDestination }: ContactProps): JSX.Eleme
                 required
                 value={form.lastName}
                 onChange={handleChange}
-                className="w-full px-6 py-4 rounded-2xl bg-white border border-slate-200 focus:border-brand-blue focus:ring-4 focus:ring-brand-blue/5 outline-none transition-all font-medium"
+                className="w-full rounded-2xl border border-slate-200 bg-white px-6 py-4 font-medium outline-none transition-all focus:border-brand-blue focus:ring-4 focus:ring-brand-blue/5"
               />
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid gap-6 md:grid-cols-2">
             <div className="space-y-2">
-              <label htmlFor="email" className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">
+              <label
+                htmlFor="email"
+                className="ml-1 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400"
+              >
                 Email Address *
               </label>
               <input
@@ -270,11 +328,14 @@ export default function Contact({ defaultDestination }: ContactProps): JSX.Eleme
                 required
                 value={form.email}
                 onChange={handleChange}
-                className="w-full px-6 py-4 rounded-2xl bg-white border border-slate-200 focus:border-brand-blue focus:ring-4 focus:ring-brand-blue/5 outline-none transition-all font-medium"
+                className="w-full rounded-2xl border border-slate-200 bg-white px-6 py-4 font-medium outline-none transition-all focus:border-brand-blue focus:ring-4 focus:ring-brand-blue/5"
               />
             </div>
             <div className="space-y-2">
-              <label htmlFor="phone" className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">
+              <label
+                htmlFor="phone"
+                className="ml-1 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400"
+              >
                 Phone Number *
               </label>
               <input
@@ -284,14 +345,17 @@ export default function Contact({ defaultDestination }: ContactProps): JSX.Eleme
                 required
                 value={form.phone}
                 onChange={handleChange}
-                className="w-full px-6 py-4 rounded-2xl bg-white border border-slate-200 focus:border-brand-blue focus:ring-4 focus:ring-brand-blue/5 outline-none transition-all font-medium"
+                className="w-full rounded-2xl border border-slate-200 bg-white px-6 py-4 font-medium outline-none transition-all focus:border-brand-blue focus:ring-4 focus:ring-brand-blue/5"
               />
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid gap-6 md:grid-cols-2">
             <div className="space-y-2">
-              <label htmlFor="destination" className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">
+              <label
+                htmlFor="destination"
+                className="ml-1 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400"
+              >
                 Interested Destination
               </label>
               <select
@@ -299,7 +363,7 @@ export default function Contact({ defaultDestination }: ContactProps): JSX.Eleme
                 name="destination"
                 value={form.destination}
                 onChange={handleChange}
-                className="w-full px-6 py-4 rounded-2xl bg-white border border-slate-200 focus:border-brand-blue outline-none transition-all font-bold text-slate-700 appearance-none"
+                className="w-full appearance-none rounded-2xl border border-slate-200 bg-white px-6 py-4 font-bold text-slate-700 outline-none transition-all focus:border-brand-blue"
               >
                 <option value="">Select Country</option>
                 {DESTINATIONS.map((d: Destination) => (
@@ -310,7 +374,10 @@ export default function Contact({ defaultDestination }: ContactProps): JSX.Eleme
               </select>
             </div>
             <div className="space-y-2">
-              <label htmlFor="qualification" className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">
+              <label
+                htmlFor="qualification"
+                className="ml-1 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400"
+              >
                 Highest Qualification
               </label>
               <select
@@ -318,7 +385,7 @@ export default function Contact({ defaultDestination }: ContactProps): JSX.Eleme
                 name="qualification"
                 value={form.qualification}
                 onChange={handleChange}
-                className="w-full px-6 py-4 rounded-2xl bg-white border border-slate-200 focus:border-brand-blue outline-none transition-all font-bold text-slate-700 appearance-none"
+                className="w-full appearance-none rounded-2xl border border-slate-200 bg-white px-6 py-4 font-bold text-slate-700 outline-none transition-all focus:border-brand-blue"
               >
                 <option value="">Select Level</option>
                 <option value="Class 10">Class 10</option>
@@ -331,7 +398,10 @@ export default function Contact({ defaultDestination }: ContactProps): JSX.Eleme
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="message" className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">
+            <label
+              htmlFor="message"
+              className="ml-1 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400"
+            >
               Message / Questions
             </label>
             <textarea
@@ -341,36 +411,40 @@ export default function Contact({ defaultDestination }: ContactProps): JSX.Eleme
               placeholder="Tell us about your goals..."
               value={form.message}
               onChange={handleChange}
-              className="w-full px-6 py-5 rounded-2xl bg-white border border-slate-200 focus:border-brand-blue outline-none transition-all font-medium resize-none"
+              className="w-full resize-none rounded-2xl border border-slate-200 bg-white px-6 py-5 font-medium outline-none transition-all focus:border-brand-blue"
             />
           </div>
 
-                      <label className="flex items-start gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3">
-              <input
-                type="checkbox"
-                name="consent"
-                required
-                aria-required="true"
-                checked={form.consent}
-                onChange={handleChange}
-                className="mt-0.5 h-4 w-4 rounded border-slate-300 text-brand-blue focus:ring-brand-blue"
-              />
-              <span className="text-xs leading-5 text-slate-600">
-                By submitting this form, I consent to receiving marketing communications from Brightpath at any time.
-              </span>
-            </label>
+          <label className="flex items-start gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3">
+            <input
+              type="checkbox"
+              name="consent"
+              required
+              aria-required="true"
+              checked={form.consent}
+              onChange={handleChange}
+              className="mt-0.5 h-4 w-4 rounded border-slate-300 text-brand-blue focus:ring-brand-blue"
+            />
+            <span className="text-xs leading-5 text-slate-600">
+              By submitting this form, I consent to receiving marketing communications
+              from Brightpath at any time.
+            </span>
+          </label>
 
           <button
             type="submit"
-            disabled={isSubmitting}
-            className="w-full py-5 bg-gradient-to-r from-brand-blue via-brand-blue to-brand-purple text-white font-black rounded-2xl hover:brightness-110 transition-all shadow-xl shadow-blue-600/20 flex items-center justify-center gap-3 disabled:opacity-70 group"
+            disabled={isSubmitting || !isFormValid}
+            className="group flex w-full items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-brand-blue via-brand-blue to-brand-purple py-5 font-black text-white shadow-xl shadow-blue-600/20 transition-all hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-70"
           >
             {isSubmitting ? (
-              <Loader2 className="w-5 h-5 animate-spin" aria-hidden="true" />
+              <Loader2 className="h-5 w-5 animate-spin" aria-hidden="true" />
             ) : (
-              <Send className="w-5 h-5 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+              <Send
+                className="h-5 w-5 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1"
+                aria-hidden="true"
+              />
             )}
-            <span className="uppercase tracking-[0.2em] text-xs">Send Your Message</span>
+            <span className="text-xs uppercase tracking-[0.2em]">Send Your Message</span>
           </button>
         </form>
       </div>

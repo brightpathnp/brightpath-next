@@ -36,7 +36,7 @@ const initialFormData: ConsultationFormData = {
   testScore: '',
   destination: '',
   message: '',
-  consent: true,
+  consent: false,
 };
 
 export default function ConsultationModal({
@@ -49,6 +49,13 @@ export default function ConsultationModal({
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const isCallBack = title === 'Request Call Back';
+
+  const isFormValid =
+    formData.firstName.trim() !== '' &&
+    formData.lastName.trim() !== '' &&
+    formData.email.trim() !== '' &&
+    formData.phone.trim() !== '' &&
+    formData.consent;
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent): void => {
@@ -106,7 +113,7 @@ export default function ConsultationModal({
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
 
-    if (!formData.consent) {
+    if (!isFormValid) {
       return;
     }
 
@@ -465,7 +472,7 @@ export default function ConsultationModal({
 
             <button
               type="submit"
-              disabled={isSubmitting || !formData.consent}
+              disabled={isSubmitting || !isFormValid}
               className="w-full py-3 bg-gradient-to-r from-brand-blue to-brand-purple hover:brightness-110 text-white font-bold rounded-lg shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2 mt-4 disabled:opacity-70 disabled:cursor-not-allowed"
             >
               {isSubmitting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}

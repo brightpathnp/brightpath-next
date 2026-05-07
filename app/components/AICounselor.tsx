@@ -568,8 +568,8 @@ const AICounselor: React.FC = () => {
                 <Sparkles className="w-5 h-5" />
               </div>
               <div className="text-left">
-                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1.5">Free AI Support</p>
-                <p className="text-sm font-black text-slate-900 tracking-tight leading-none">Voice or Chat with Mr. Bright</p>
+                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1.5">Online Support</p>
+                <p className="text-sm font-black text-slate-900 tracking-tight leading-none">Chat with us</p>
               </div>
             </div>
           </div>
