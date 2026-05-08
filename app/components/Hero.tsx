@@ -1,12 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { ReactElement, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, CheckCircle, Globe } from 'lucide-react';
 import ConsultationModal from './ConsultationModal';
 
-const Hero = (): React.Eleme => {
+const Hero = (): ReactElement => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
 
   return (

@@ -108,7 +108,7 @@ export default function BlogPostClient(
 [&_figure]:my-8 [&_figure]:max-w-full
 [&_figcaption]:mt-3 [&_figcaption]:text-sm [&_figcaption]:text-slate-400
 [&_hr]:my-10 [&_hr]:border-slate-200"
-              dangerouslySetInnerHTML={{ __html: post.content }}
+              dangerouslySetInnerHTML={{ __html: post.content ?? "" }}
             />
           </div>
 
