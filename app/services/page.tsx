@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { ReactElement, useState } from 'react';
 import Link from 'next/link';
 import * as LucideIcons from 'lucide-react';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
@@ -15,7 +15,7 @@ function resolveIcon(iconName: string): React.ElementType {
   return (LucideIcons as unknown as Record<string, React.ElementType>)[key] ?? LucideIcons.Globe;
 }
 
-export default function ServicesPage(): React.JSX.Element {
+export default function ServicesPage(): ReactElement {
   const [modalOpen, setModalOpen] = useState(false);
 
   return (

@@ -2,8 +2,9 @@ import type React from 'react';
 import * as LucideIcons from 'lucide-react';
 import type { LanguageClass } from '@/types';
 import { LANGUAGES } from '@/lib/constants';
+import { ReactElement } from 'react';
 
-export default function LanguagePrep(): React.JSX.Element {
+export default function LanguagePrep(): ReactElement {
   return (
     <section id="test-prep" className="py-12 md:py-14 bg-white font-sans">
       <div className="max-w-6xl mx-auto px-4">

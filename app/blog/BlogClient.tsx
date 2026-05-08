@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, ReactElement } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -19,7 +19,7 @@ import type { BlogPost } from '@/types';
 
 const POSTS_PER_PAGE = 6;
 
-export default function BlogClient(): JSX.Element {
+export default function BlogClient(): ReactElement {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [recentPosts, setRecentPosts] = useState<BlogPost[]>([]);
   const [liveCategories, setLiveCategories] = useState<WPCategory[]>([]);

@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { MILESTONES } from '@/lib/constants';
 import type { Milestone } from '@/types';
+import { ReactElement } from 'react';
 
 export const metadata: Metadata = {
   title: 'About Us | BrightPath',
@@ -85,7 +86,7 @@ const edgeItems = [
   },
 ];
 
-export default function AboutPage(): JSX.Element {
+export default function AboutPage(): ReactElement {
   return (
     <div className="page-transition min-h-screen bg-slate-50 font-sans">
 

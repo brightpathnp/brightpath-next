@@ -4,6 +4,7 @@ import { BLOG_POSTS } from '@/lib/constants';
 import { fetchWordPressPosts } from '@/services/wordpressService';
 import type { BlogPost } from '@/types';
 import BlogPostClient from './BlogPostClient';
+import { ReactElement } from 'react';
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -56,7 +57,7 @@ export async function generateMetadata(
 
 export default async function BlogPostPage(
   { params }: BlogPostPageProps,
-): Promise<JSX.Element> {
+): Promise<ReactElement> {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
 

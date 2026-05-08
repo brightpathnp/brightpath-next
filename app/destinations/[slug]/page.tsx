@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { DESTINATIONS } from '@/lib/constants';
 import DestinationDetailClient from './DestinationDetailClient';
+import { ReactElement } from 'react';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -26,7 +27,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default async function DestinationDetailPage({ params }: PageProps): Promise<React.JSX.Element> {
+export default async function DestinationDetailPage({ params }: PageProps): Promise<ReactElement> {
   const { slug } = await params;
   const destination = DESTINATIONS.find((d) => d.id === slug);
   if (!destination) notFound();

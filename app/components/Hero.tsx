@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { ArrowRight, CheckCircle, Globe } from 'lucide-react';
 import ConsultationModal from './ConsultationModal';
 
-const Hero = (): JSX.Element => {
+const Hero = (): React.Eleme => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
 
   return (

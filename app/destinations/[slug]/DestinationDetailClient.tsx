@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { ReactElement, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -24,7 +24,7 @@ interface DestinationDetailClientProps {
   destination: Destination;
 }
 
-export default function DestinationDetailClient({ destination }: DestinationDetailClientProps): React.JSX.Element {
+export default function DestinationDetailClient({ destination }: DestinationDetailClientProps): ReactElement{
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const { details } = destination;

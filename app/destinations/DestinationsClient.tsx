@@ -1,13 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { ReactElement, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Search, Globe, MapPin, Check, ArrowRight } from 'lucide-react';
 import { DESTINATIONS } from '@/lib/constants';
 import type { Destination } from '@/types';
 
-export default function DestinationsClient(): JSX.Element {
+export default function DestinationsClient(): ReactElement {
   const [searchTerm, setSearchTerm] = useState<string>('');
 
   const filtered = DESTINATIONS.filter(

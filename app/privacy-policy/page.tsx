@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import PrivacyPolicyClientPage from './PrivacyPolicyClientPage';
+import { ReactElement } from 'react';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy',
@@ -13,6 +14,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function PrivacyPolicyPage(): React.JSX.Element {
+export default function PrivacyPolicyPage(): ReactElement {
   return <PrivacyPolicyClientPage />;
 }

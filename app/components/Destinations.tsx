@@ -3,8 +3,9 @@ import Link from 'next/link';
 import { ArrowRight, Check } from 'lucide-react';
 import { DESTINATIONS } from '@/lib/constants';
 import type { Destination } from '@/types';
+import { ReactElement } from 'react';
 
-export default function Destinations(): JSX.Element {
+export default function Destinations(): ReactElement {
   return (
     <section id="destinations" className="py-24 bg-slate-50 font-sans">
       <div className="max-w-7xl mx-auto px-4">

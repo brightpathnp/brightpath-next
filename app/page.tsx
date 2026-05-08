@@ -6,8 +6,9 @@ import LanguagePrep from './components/LanguagePrep';
 import WhyChooseUs from './components/WhyChooseUs';
 import Contact from './components/Contact';
 import AICounselor from './components/AICounselor';
+import { ReactElement } from 'react';
 
-export default function Home(): JSX.Element {
+export default function Home(): ReactElement {
   return (
     <main>
       <Hero />

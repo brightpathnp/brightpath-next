@@ -2,6 +2,7 @@ import type React from 'react';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { ReactElement } from 'react';
 
 const points: string[] = [
   'Authorized Representative of Global Top 500 Universities',
@@ -11,7 +12,7 @@ const points: string[] = [
   '100% Transparent Scholarship Documentation Process',
 ];
 
-export default function WhyChooseUs(): React.ReactElement {
+export default function WhyChooseUs(): ReactElement{
   return (
     <section id="about" className="py-16 bg-white font-sans">
       <div className="max-w-7xl mx-auto px-4">

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import BlogClient from './BlogClient';
+import { ReactElement } from 'react';
 
 export const metadata: Metadata = {
   title: 'Blog & News | BrightPath',
@@ -11,6 +12,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BlogPage(): JSX.Element {
+export default function BlogPage(): ReactElement {
   return <BlogClient />;
 }

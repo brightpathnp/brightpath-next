@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { ReactElement, useState } from 'react';
 import ContactPolicyModal from '@/app/components/ContactPolicyModal';
 
 interface TermsSection {
@@ -91,7 +91,7 @@ const termsSections: TermsSection[] = [
   },
 ];
 
-export default function TermsOfUseClientPage(): JSX.Element {
+export default function TermsOfUseClientPage(): ReactElement {
   const [isContactModalOpen, setIsContactModalOpen] = useState<boolean>(false);
 
   return (

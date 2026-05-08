@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { ReactElement, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import * as LucideIcons from 'lucide-react';
@@ -24,7 +24,7 @@ function resolveIcon(iconName: string): React.ElementType {
   return (LucideIcons as unknown as Record<string, React.ElementType>)[key] ?? LucideIcons.Globe;
 }
 
-export default function ServiceDetailClient({ service }: ServiceDetailClientProps): React.JSX.Element {
+export default function ServiceDetailClient({ service }: ServiceDetailClientProps): ReactElement {
   const [modalOpen, setModalOpen] = useState(false);
   const Icon = resolveIcon(service.icon);
 

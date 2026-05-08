@@ -10,6 +10,7 @@ import {
   ArrowRight,
 } from 'lucide-react';
 import type { BlogPost } from '@/types';
+import { ReactElement } from 'react';
 
 interface BlogPostClientProps {
   post: BlogPost;
@@ -17,7 +18,7 @@ interface BlogPostClientProps {
 
 export default function BlogPostClient(
   { post }: BlogPostClientProps,
-): JSX.Element {
+): ReactElement {
   return (
     <main className="min-h-screen bg-slate-50 font-sans">
       <section className="bg-gradient-to-r from-brand-dark via-brand-blue to-brand-purple py-12 md:py-16 relative overflow-hidden">

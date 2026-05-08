@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { ReactElement, useState } from 'react';
 import Image from 'next/image';
 import { MapPin, Phone, Mail, Send, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
 import { DESTINATIONS } from '@/lib/constants';
@@ -35,7 +35,7 @@ const INITIAL_FORM: FormState = {
   consent: false,
 };
 
-export default function Contact({ defaultDestination }: ContactProps): JSX.Element {
+export default function Contact({ defaultDestination }: ContactProps): ReactElement {
   const [form, setForm] = useState<FormState>({
     ...INITIAL_FORM,
     destination: defaultDestination ?? '',

@@ -2,8 +2,9 @@ import Image from 'next/image';
 import { Quote } from 'lucide-react';
 import { TESTIMONIALS } from '@/lib/constants';
 import type { Testimonial } from '@/types';
+import { ReactElement } from 'react';
 
-export default function SucessStories(): JSX.Element {
+export default function SucessStories(): ReactElement {
   return (
     <section id="testimonials" className="py-12 md:py-14 bg-white relative overflow-hidden font-sans">
       <div className="max-w-6xl mx-auto px-4 relative z-10">

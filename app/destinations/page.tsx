@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import DestinationsClient from './DestinationsClient';
+import { ReactElement } from 'react';
 
 export const metadata: Metadata = {
   title: 'Study Destinations | BrightPath',
@@ -11,6 +12,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function DestinationsPage(): JSX.Element {
+export default function DestinationsPage(): ReactElement {
   return <DestinationsClient />;
 }

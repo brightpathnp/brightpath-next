@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { MessageCircleMore } from 'lucide-react';
 import Contact from '@/app/components/Contact';
+import { ReactElement } from 'react';
 
 export const metadata: Metadata = {
   title: 'Contact Us | BrightPath Education Consultancy',
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ContactPage(): JSX.Element {
+export default function ContactPage(): ReactElement {
   return (
     <main className="bg-white">
       <section className="relative overflow-hidden bg-gradient-to-br from-brand-dark via-brand-blue to-brand-purple">

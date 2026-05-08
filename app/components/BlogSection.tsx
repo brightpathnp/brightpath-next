@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { ArrowRight, Calendar, User, Loader2, Sparkles } from 'lucide-react';
 import { BLOG_POSTS as STATIC_POSTS } from '@/lib/constants';
@@ -12,7 +12,7 @@ interface BlogSectionProps {
   onPostClick?: (post: BlogPost) => void;
 }
 
-const BlogSection = ({ onNavigate, onPostClick }: BlogSectionProps): JSX.Element => {
+const BlogSection = ({ onNavigate, onPostClick }: BlogSectionProps): ReactElement => {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 

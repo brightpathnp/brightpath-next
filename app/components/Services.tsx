@@ -3,6 +3,7 @@ import * as LucideIcons from 'lucide-react';
 import { ArrowRight } from 'lucide-react';
 import { SERVICES } from '@/lib/constants';
 import type { Service } from '@/types';
+import { ReactElement } from 'react';
 
 function getIcon(iconName: string): React.ElementType {
   const key =
@@ -11,7 +12,7 @@ function getIcon(iconName: string): React.ElementType {
   return (LucideIcons as unknown as Record<string, React.ElementType>)[key] ?? LucideIcons.Globe;
 }
 
-export default function Services(): JSX.Element {
+export default function Services(): ReactElement {
   return (
     <section id="services" className="py-24 bg-white font-sans">
       <div className="max-w-7xl mx-auto px-4">

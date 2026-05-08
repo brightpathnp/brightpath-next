@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import { SERVICES } from '@/lib/constants';
 import type { Instructor } from '@/types';
+import { ReactElement } from 'react';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -44,7 +45,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default async function TeamMemberPage({ params }: PageProps): Promise<JSX.Element> {
+export default async function TeamMemberPage({ params }: PageProps): Promise<ReactElement> {
   const { slug } = await params;
   const member = findMemberBySlug(slug);
   if (!member) notFound();

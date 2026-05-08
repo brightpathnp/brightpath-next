@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import CookieBanner from './components/CookieBanner';
 import './globals.css';
 import TopBar from './components/TopBar';
+import { ReactElement } from 'react';
 
 const openSans = Open_Sans({
   subsets: ['latin'],
@@ -59,7 +60,7 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>): React.JSX.Element {
+}>): ReactElement {
   return (
     <html lang="en" suppressHydrationWarning className={openSans.variable}>
       <body

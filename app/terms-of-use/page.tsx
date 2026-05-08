@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import TermsOfUseClientPage from './TermsOfUseClientPage';
+import { ReactElement } from 'react';
 
 export const metadata: Metadata = {
   title: 'Terms of Use',
@@ -13,6 +14,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function TermsOfUsePage(): React.JSX.Element {
+export default function TermsOfUsePage(): ReactElement {
   return <TermsOfUseClientPage />;
 }

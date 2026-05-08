@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { ChevronRight } from 'lucide-react';
+import { ReactElement } from 'react';
 
 const socialLinks = [
   { label: 'Facebook',  href: 'https://www.facebook.com/brightpatheducation', slug: 'facebook'  },
@@ -25,7 +26,7 @@ const legal = [
   { label: 'Refund Policy',   href: '/refund-policy'   },
 ];
 
-export default function Footer(): React.JSX.Element {
+export default function Footer(): ReactElement {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -83,7 +84,7 @@ export default function Footer(): React.JSX.Element {
                 { label: 'Services',     href: '/services'     },
                 { label: 'Destinations', href: '/destinations' },
                 { label: 'About Us',     href: '/about'        },
-                { label: 'Updates',      href: '/blog'         },
+                { label: 'Blog',      href: '/blog'         },
               ].map((item) => (
                 <li key={item.href}>
                   <Link

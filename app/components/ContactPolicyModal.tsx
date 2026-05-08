@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { ReactElement, useEffect, useRef, useState } from 'react';
 import { AlertCircle, CheckCircle, Loader2, Send, X } from 'lucide-react';
 
 interface ContactPolicyModalProps {
@@ -13,7 +13,7 @@ export default function ContactPolicyModal({
   isOpen,
   onClose,
   title = 'Contact Us',
-}: ContactPolicyModalProps): JSX.Element | null {
+}: ContactPolicyModalProps): ReactElement | null {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [consent, setConsent] = useState<boolean>(true);

@@ -1,10 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, ReactElement } from 'react';
 import { Cookie, X } from 'lucide-react';
 import Link from 'next/link';
 
-export default function CookieBanner(): React.JSX.Element | null {
+export default function CookieBanner(): ReactElement | null {
   const [visible, setVisible] = useState<boolean>(false);
 
   useEffect(() => {

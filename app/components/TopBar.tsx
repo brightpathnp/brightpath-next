@@ -1,7 +1,8 @@
 import { Mail, Phone, Smartphone } from 'lucide-react';
 import Image from 'next/image';
+import { ReactElement } from 'react';
 
-export default function TopBar(): React.JSX.Element {
+export default function TopBar(): ReactElement {
     return (
         <div className="fixed top-0 inset-x-0 z-50 h-8 hidden sm:flex items-center bg-gradient-to-r from-[#214aaf] to-blue-500">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex items-center gap-5">

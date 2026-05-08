@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
 import { X, Send, Loader2, CheckCircle, AlertCircle, CalendarClock } from 'lucide-react';
 import { DESTINATIONS } from '@/lib/constants';
 import type { ConsultationModalProps, Destination } from '@/types/index';
@@ -43,7 +43,7 @@ export default function ConsultationModal({
   isOpen,
   onClose,
   title = 'Free Consultation',
-}: ConsultationModalProps): JSX.Element | null {
+}: ConsultationModalProps): ReactElement | null {
   const [formData, setFormData] = useState<ConsultationFormData>(initialFormData);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
